@@ -31,21 +31,31 @@ $this->params['activeMenu'] = $this->title;
                             </p>
                         </div>
                     </div>
-                                            <?= GridView::widget([
+                    <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [['class' => 'yii\grid\SerialColumn'],
 
-                            [
-                                'attribute' => 'id',
-                                'format'=>'raw',
-                                'headerOptions'=>['width'=>'100px']
-                            ],
-                        'name',
+//                            [
+//                                'attribute' => 'id',
+//                                'format'=>'raw',
+//                                'headerOptions'=>['width'=>'100px']
+//                            ],
+                            'name',
                             [
                                 'attribute' => 'maxCallOut',
                                 'format'=>'raw',
                                 'headerOptions'=>['width'=>'100px']
+                            ],
+                            [
+                                'attribute' => 'position',
+                                'format'=>'raw',
+                                'headerOptions'=>['width'=>'80px']
+                            ],
+                            [
+                                'attribute' => 'minBalance',
+                                'format'=>'raw',
+                                'headerOptions'=>['width'=>'80px']
                             ],
                             [
                                 'attribute' => 'maxAllowedCode',
@@ -63,18 +73,18 @@ $this->params['activeMenu'] = $this->title;
                                 'headerOptions'=>['width'=>'100px']
                             ],
 //                        'enable',
-                        // 'code',
-                        // 'videoMaxSize',
-                        // 'pictureMaxSize',
-                        // 'minBalance',
-                        // 'update_by',
-                        // 'update_at',
-                        // 'create_by',
-                        // 'created_at',
+                            // 'code',
+                            // 'videoMaxSize',
+                            // 'pictureMaxSize',
+                            // 'minBalance',
+                            // 'update_by',
+                            // 'update_at',
+                            // 'create_by',
+                            // 'created_at',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                            ['class' => 'yii\grid\ActionColumn'],
                         ],
-                        ]); ?>
+                    ]); ?>
 
                 </div>
             </div>
