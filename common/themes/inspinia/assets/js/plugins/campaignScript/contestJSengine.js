@@ -1,33 +1,12 @@
 window.Question_number = 1;
 
-$(document).ready(function(){ 
+$(document).ready(function(){ alert('fdfasf');
 
 
 	$('#questNo').val(Question_number); 
 	$("#question_status").hide('slow');
 	//$("#question_status").hide('slow');
 
-
- 
-
-	/*$("#newContestForm").hide();
-	$("#subjectiveForm").hide();
-
-	var contest_saved_status = $("#contest_saved_status").val();
-	if(contest_saved_status == 1) 
-	{  
-		//var contestName = $("#contest_name").val();
-		$("#ContestFormType").show('slow');
-		$("#success_text").show('slow');
-
-	}else if(contest_saved_status == 2) 
-	{  
-		//var contestName = $("#contest_name").val();
-		$("#ContestFormType").show('slow');
-		//$("#success_text").show('slow');
-
-	}*/
- 
 
 });
 
@@ -168,6 +147,8 @@ $('body').on('beforeSubmit', 'form#contestDetailForm', function ()
 
 // contest patcher script
 function getContest(urlhost) {
+
+	alert(urlhost);
 
 	$('#fullView_question').html('');
 	var currentContestID = $('#currentContestID').val();

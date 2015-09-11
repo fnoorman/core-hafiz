@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                                     $url = Yii::$app->urlManager->createAbsoluteUrl(['contestmain/getjsoncontest_specific']);
                                 ?>
                                
-                               <a onclick="showContestFullDetails("<?=$url?>")" class="btn btn-primary pull-right" type="button"><i class="fa fa-check-square"></i> <strong>Contest Full View</strong></a>
+                               <a onclick="showContestFullDetails(<?=$url?>)" class="btn btn-primary pull-right" type="button"><i class="fa fa-check-square"></i> <strong>Contest Full View</strong></a>
                                 <button style="margin-right:5px" onclick="showQuestionForm()" class="btn btn-primary pull-right" type="button"><i class="fa fa-plus-square-o"></i> <strong>Add Question</strong></button> &nbsp;&nbsp; 
                             </p>
                         </div>
