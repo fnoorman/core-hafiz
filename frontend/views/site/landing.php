@@ -469,6 +469,82 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
         </div>
         <!-- </div> -->
     <!-- End Pricing Dark -->
+
+    <!--Callout Packages-->        
+        <div class="title-v1" style="padding-top:90px;">
+            <h2>Call Out Packages</h2>
+        </div>
+        <div class="row margin-bottom-40">
+            <div class="col-md-3 col-sm-6">
+                <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3  style="background-color:#29abe2;">500<span>Call Out Package</span></h3>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <br>
+                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> RM0.20 Per Unit</li>
+                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> 500 Call Out<span></span></li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p><h4 style="font-size:30px;">RM&nbsp;100<i></i></h4></p>
+                        <a class="btn-u" href="#" style="width:100%;"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3 style="background-color:#17607f;">1,000<span>Call Out Package</span></h3>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <br>
+                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> RM0.15 Per Unit</li>
+                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> 1,000 Call Out</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p><h4 style="font-size:30px;">RM&nbsp;150<i></i></h4></p>
+                        <a class="btn-u" href="#" style="width:100%;"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
+                   </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3  style="background-color:#29abe2;">10,000<span>Call Out Package</span></h3>                        
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <br>
+                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> RM&nbsp;0.10 Per Unit</li>
+                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> 10,000 Call Out</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p><h4 style="font-size:30px;">RM&nbsp;1,000<i></i></h4></p>
+                        <a class="btn-u" href="#"  style="width:100%;"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="pricing hover-effect">
+                    <div class="pricing-head">
+                        <h3  style="background-color:#17607f;">100,000<span>Call Out Package</span></h3>
+                    </div>
+                    <ul class="pricing-content list-unstyled">
+                        <br>
+                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> RM0.05 Per Unit</li>
+                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> 100,000 Call Out</li>
+                    </ul>
+                    <div class="pricing-footer">
+                        <p><h4 style="font-size:30px;">RM&nbsp;5,000<i></i></h4></p>
+                        <a class="btn-u" href="#" style="width:100%;"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;">
+           <a class="btn-u">More Call Out Packages</a> 
+        </div>
+        <!--End Callout Packages-->
+    
     </div><!--/container-->
 
     <!--<div class="call-action-v1">
