@@ -1,6 +1,6 @@
 window.Question_number = 1;
 
-$(document).ready(function(){ alert('fdfasf');
+$(document).ready(function(){  
 
 
 	$('#questNo').val(Question_number); 
