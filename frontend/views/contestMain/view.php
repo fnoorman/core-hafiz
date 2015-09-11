@@ -38,11 +38,8 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                                 ],
                                 ]) ?>
 
-                                <?php
-                                    $url = Yii::$app->urlManager->createAbsoluteUrl(['contestmain/getjsoncontest_specific']);
-                                ?>
                                
-                               <a onclick="showContestFullDetails(<?=$url?>)" class="btn btn-primary pull-right" type="button"><i class="fa fa-check-square"></i> <strong>Contest Full View</strong></a>
+                               <a onclick="showContestFullDetails()" class="btn btn-primary pull-right" type="button"><i class="fa fa-check-square"></i> <strong>Contest Full View</strong></a>
                                 <button style="margin-right:5px" onclick="showQuestionForm()" class="btn btn-primary pull-right" type="button"><i class="fa fa-plus-square-o"></i> <strong>Add Question</strong></button> &nbsp;&nbsp; 
                             </p>
                         </div>
@@ -61,16 +58,17 @@ $this->params['breadcrumbs'][] = $model->contest_name;
         </div>
     </div>
 
-    <p id="allHiddenInput" style="display:block">
+    <p id="allHiddenInput" style="display:none">
         <input type="text" id="currentContestID" value="<?=$model->id?>">
+        <input type="text" id="currentFullViewLink" value="<?= Url::to(['contestmain/getjsoncontest_specific'])?>">
         <input type="text" id="linkTOdeleteContest" value="<?=Yii::$app->urlManager->createUrl('contest/delete_remote')?>">
         <a href="<?= Url::to(['contestmain/getjsoncontest_specific'])?>" data-method="post">..zfdsfd.</a>
     </p>
 
-            <div style="display:none" id="addQuestionRow" class="row">
+            <div class="row">
 
 
-                <div class="col-lg-12 animated fadeInLeft">
+                <div style="display:none" id="addQuestionRow" class="col-lg-5 animated fadeInLeft">
                             <div class="panel panel-primary">
                                  <div class="panel-heading">
                                           <h3>  <b class=""><?=$model->contest_name?></b> </h3> 
@@ -156,10 +154,10 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                            </div>
                        </div>
                     </div>
-            </div>
+            
  
-         <div style="display:none" id="fullView_question_pane" class="row">
-             <div class="col-lg-12">
+         <div style="display:none" id="fullView_question_pane">
+             <div class="col-lg-7">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                          <h5>  <b class=""><?=$model->contest_name?></b> </h5>
@@ -181,6 +179,7 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                     </div>
                 </div>
             </div> 
+        </div> 
         </div>             
 </div>
 

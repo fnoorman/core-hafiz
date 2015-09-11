@@ -139,6 +139,8 @@ $('body').on('beforeSubmit', 'form#contestDetailForm', function ()
                $("#A").val("");$("#B").val("");$("#D").val("");$("#C").val("");
         
                $("#contest_details_form").hide('slow');
+
+               showContestFullDetails();
           }
      });
      return false;   // set false to prevent form to submit (prevent page refresh; submitted via ajax)
@@ -146,16 +148,15 @@ $('body').on('beforeSubmit', 'form#contestDetailForm', function ()
  
 
 // contest patcher script
-function getContest(urlhost) {
-
-	alert(urlhost);
+function getContest() { 
 
 	$('#fullView_question').html('');
+	var currentFullViewLink = $('#currentFullViewLink').val();
 	var currentContestID = $('#currentContestID').val();
 	var linkTOdeleteContest = $('#linkTOdeleteContest').val();
 
            $.ajax({
-                url: urlhost +'&contest_id='+currentContestID,
+                url: currentFullViewLink +'&contest_id='+currentContestID,
                 dataType: 'json',
                 crossDomain: true,
                 json: true,
