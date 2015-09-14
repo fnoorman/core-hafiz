@@ -4,7 +4,8 @@ namespace common\models;
 use yii\behaviors\TimestampBehavior;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
+use common\models\Lookup;
 /**
  * This is the model class for table "contest_main".
  *
@@ -19,7 +20,7 @@ class ContestMain extends \yii\db\ActiveRecord
      * @inheritdoc
      */
     public $layout = 'columns-2';
-    
+
     public static function tableName()
     {
         return 'contest_main';
@@ -32,8 +33,10 @@ class ContestMain extends \yii\db\ActiveRecord
     {
         return [
             TimestampBehavior::className(),
+
         ];
     }
+
 
     /**
      * @inheritdoc
@@ -42,7 +45,7 @@ class ContestMain extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'contest_name'], 'required'],
-            [['user_id', 'status'], 'integer'],
+            [['user_id', 'status','created_at','updated_at'], 'integer'],
             [['contest_name'], 'string', 'max' => 31]
         ];
     }
@@ -57,6 +60,8 @@ class ContestMain extends \yii\db\ActiveRecord
             'user_id' => Yii::t('app', 'User ID'),
             'contest_name' => Yii::t('app', 'Contest Name'),
             'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 
@@ -76,4 +81,11 @@ class ContestMain extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Contest::className(), ['contest_id' => 'id']);
     }
+
+    public function getStatusText()
+    {
+        return Lookup::item('Status-Package',$this->status);
+    }
+
+
 }

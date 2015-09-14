@@ -32,13 +32,30 @@ $this->params['breadcrumbs'][] = $this->title;
                             </p>
                         </div>
                     </div>
+<<<<<<< HEAD
+                        <?= GridView::widget([
+=======
 
                                             <?= GridView::widget([
+>>>>>>> code-hafiz
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
-        'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
 
+<<<<<<< HEAD
+                                'id',
+                                //'user_id',
+                                'contest_name',
+                                [
+                                    'attribute' => 'status',
+                                    'format'    => 'html',
+                                    'value'     => function($model){
+                                        return $model->statustext;
+                                    }
+                                ],
+                            ['class' => 'yii\grid\ActionColumn'],
+=======
                                    // 'id',
                                     //'user_id',
                                     'contest_name',
@@ -46,6 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'created_at:date',
 
                         ['class' => 'yii\grid\ActionColumn'],
+>>>>>>> code-hafiz
                         ],
                         ]); ?>
                     

@@ -47,32 +47,55 @@ $custom = CustomInspiniaAsset::register($this);
 
 
 
-                    <?= DetailView::widget([
-                    'model' => $model,
-                    'attributes' => [
-                        'id',
-                        'name',
-                        'maxCallOut',
-                        'maxAllowedCode',
-                        [
-                            'label'=> 'Status',
-                            'value'=> $model->StatusText()
-                        ],
-                        'code',
-                        'videoMaxSize',
-                        'pictureMaxSize',
-                        'minBalance',
-                        'update_by',
-                        'updated_at:datetime',
-                        'create_by',
-                        'created_at:datetime',
-                    ],
-                    ]) ?>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <?= DetailView::widget([
+                                'model' => $model,
+                                'template'=>'<tr><th width="35%">{label}</th><td>{value}</td></tr>',
+                                'options'=>['class'=>'table table-striped'],
+                                'attributes' => [
+                                    //'id',
+                                    'name',
+                                    'maxCallOut',
+                                    'maxAllowedCode',
+                                    [
+                                        'label'=> 'Status',
+                                        'value'=> $model->StatusText()
+                                    ],
+                                    'code',
+                                    'videoMaxSize',
+                                    'duration'
+
+                                ],
+                            ]) ?>
+                        </div>
+                        <div class="col-lg-6">
+                            <?= DetailView::widget([
+                                'model' => $model,
+                                'template'=>'<tr><th width="35%">{label}</th><td>{value}</td></tr>',
+                                'options'=>['class'=>'table table-striped'],
+                                'attributes' => [
+                                    'pictureMaxSize',
+                                    'minBalance',
+                                    'update_by',
+                                    'updated_at:datetime',
+                                    'create_by',
+                                    'created_at:datetime',
+                                    'price'
+                                ],
+                            ]) ?>
+                        </div>
+                    </div>
+
+
+
+
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <h3>Item Offer to this package</h3>
                             <div class="hr-line-dashed"></div>
+                            <h3>Item Offer to this package</h3>
+
                         </div>
 
 
@@ -119,7 +142,6 @@ $custom = CustomInspiniaAsset::register($this);
                                 </div>
 
                             </div>
-
                             <?= $form->field($offerModel,'enable')->dropDownList($model->StatusDropDownOptions(),[
 
                                 // 'data-placeholder'=>'Choose permission...',
@@ -198,4 +220,3 @@ $custom = CustomInspiniaAsset::register($this);
 </script>
 
 <?php $this->endBlock(); ?>
-

@@ -31,7 +31,7 @@ $this->params['activeMenu'] = $this->title;
                             </p>
                         </div>
                     </div>
-                    <?= GridView::widget([
+                                            <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [['class' => 'yii\grid\SerialColumn'],
@@ -41,7 +41,7 @@ $this->params['activeMenu'] = $this->title;
 //                                'format'=>'raw',
 //                                'headerOptions'=>['width'=>'100px']
 //                            ],
-                            'name',
+                        'name',
                             [
                                 'attribute' => 'maxCallOut',
                                 'format'=>'raw',
@@ -73,18 +73,18 @@ $this->params['activeMenu'] = $this->title;
                                 'headerOptions'=>['width'=>'100px']
                             ],
 //                        'enable',
-                            // 'code',
-                            // 'videoMaxSize',
-                            // 'pictureMaxSize',
-                            // 'minBalance',
-                            // 'update_by',
-                            // 'update_at',
-                            // 'create_by',
-                            // 'created_at',
+                        // 'code',
+                        // 'videoMaxSize',
+                        // 'pictureMaxSize',
+                        // 'minBalance',
+                        // 'update_by',
+                        // 'update_at',
+                        // 'create_by',
+                        // 'created_at',
 
-                            ['class' => 'yii\grid\ActionColumn'],
+                        ['class' => 'yii\grid\ActionColumn'],
                         ],
-                    ]); ?>
+                        ]); ?>
 
                 </div>
             </div>
