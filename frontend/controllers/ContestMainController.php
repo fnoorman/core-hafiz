@@ -44,6 +44,10 @@ class ContestmainController extends Controller
 
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+       // var_dump(Yii::$app->request->queryParams);
+
+       // exit;
+
         
        
 

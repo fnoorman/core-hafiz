@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5><?= Html::encode($this->title) ?> hafiz 123</h5>
+                    <h5><?= Html::encode($this->title) ?></h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -32,16 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             </p>
                         </div>
                     </div>
+
                                             <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
         'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
-                                    'id',
+                                   // 'id',
                                     //'user_id',
                                     'contest_name',
                                     'status',
+                                    'created_at:date',
 
                         ['class' => 'yii\grid\ActionColumn'],
                         ],
