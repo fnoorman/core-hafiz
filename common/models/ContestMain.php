@@ -1,6 +1,7 @@
 <?php
 
 namespace common\models;
+use yii\behaviors\TimestampBehavior;
 
 use Yii;
 
@@ -22,6 +23,16 @@ class ContestMain extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'contest_main';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
     }
 
     /**

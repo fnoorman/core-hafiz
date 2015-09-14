@@ -41,7 +41,9 @@ class ContestMainSearch extends ContestMain
      */
     public function search($params)
     {
-        $query = ContestMain::find();
+        //echo $this->user_id; exit;
+
+        $query = ContestMain::find()->andWhere('user_id = '.Yii::$app->user->getId());
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,6 +57,7 @@ class ContestMainSearch extends ContestMain
             return $dataProvider;
         }
 
+        
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,

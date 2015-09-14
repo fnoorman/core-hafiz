@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                     <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                                'id', 'contest_name', 'status'],
+                                'id', 'contest_name', 'status', 'created_at:date'],
                     ]) ?>
 
                 </div>
