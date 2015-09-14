@@ -1,33 +1,12 @@
 window.Question_number = 1;
 
-$(document).ready(function(){ 
+$(document).ready(function(){  
 
 
 	$('#questNo').val(Question_number); 
 	$("#question_status").hide('slow');
 	//$("#question_status").hide('slow');
 
-
- 
-
-	/*$("#newContestForm").hide();
-	$("#subjectiveForm").hide();
-
-	var contest_saved_status = $("#contest_saved_status").val();
-	if(contest_saved_status == 1) 
-	{  
-		//var contestName = $("#contest_name").val();
-		$("#ContestFormType").show('slow');
-		$("#success_text").show('slow');
-
-	}else if(contest_saved_status == 2) 
-	{  
-		//var contestName = $("#contest_name").val();
-		$("#ContestFormType").show('slow');
-		//$("#success_text").show('slow');
-
-	}*/
- 
 
 });
 
@@ -160,6 +139,8 @@ $('body').on('beforeSubmit', 'form#contestDetailForm', function ()
                $("#A").val("");$("#B").val("");$("#D").val("");$("#C").val("");
         
                $("#contest_details_form").hide('slow');
+
+               showContestFullDetails();
           }
      });
      return false;   // set false to prevent form to submit (prevent page refresh; submitted via ajax)
@@ -167,14 +148,15 @@ $('body').on('beforeSubmit', 'form#contestDetailForm', function ()
  
 
 // contest patcher script
-function getContest(urlhost) {
+function getContest() { 
 
 	$('#fullView_question').html('');
+	var currentFullViewLink = $('#currentFullViewLink').val();
 	var currentContestID = $('#currentContestID').val();
 	var linkTOdeleteContest = $('#linkTOdeleteContest').val();
 
            $.ajax({
-                url: urlhost +'&contest_id='+currentContestID,
+                url: currentFullViewLink +'&contest_id='+currentContestID,
                 dataType: 'json',
                 crossDomain: true,
                 json: true,

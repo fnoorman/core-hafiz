@@ -1,6 +1,7 @@
 <?php
 
 namespace common\models;
+use yii\behaviors\TimestampBehavior;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -19,7 +20,7 @@ class ContestMain extends \yii\db\ActiveRecord
      * @inheritdoc
      */
     public $layout = 'columns-2';
-    
+
     public static function tableName()
     {
         return 'contest_main';
