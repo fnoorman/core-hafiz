@@ -12,6 +12,8 @@ use common\assets\unify\SingleUnifyAsset;
 use common\assets\unify\UnifyMediaAsset;
 use common\widgets\Alert;
 use yii\helpers\Url;
+use common\models\Lookup;
+
 
 $defaultBundle = DefaultUnifyAsset::register($this);
 SingleUnifyAsset::register($this);
@@ -50,7 +52,7 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
                         <a href="#about">About Us</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#services">Packages</a>
+                        <a href="#packages">Packages</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#portfolio">Gallery</a>
@@ -74,6 +76,12 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
                             <?=html::a('Logout ('. Yii::$app->user->identity->username .')',['site/logout'], ['data-method' => 'POST'])?>
                         </li>
                     <?php endif;?>
+                    <li>
+                        <a href="#">
+                        <i class="search fa search-btn fa-shopping-cart"></i>
+                        </a>
+                        <span class="badge badge-red rounded-x" style="top:7px;right:1px;position: absolute">3</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -356,7 +364,7 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
 <!--  About Section -->
 
 <!-- Services Section -->
-<section id="services">
+<section id="packages">
     <div class="container content-lg">
         <div class="title-v1">
             <h2>Hybrizy Packages &amp; Pricing</h2>
@@ -366,259 +374,49 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
         <!-- <div class="container content"> -->
         <!-- Pricing Dark -->
         <div class="row margin-bottom-20 pricing-dark">
+            <?php foreach($packages as $package) :?>
             <div class="col-md-3 col-sm-6">
                 <div class="pricing hover-effect">
                     <div class="pricing-head">
-                        <h3>Beginner</h3>
+                        <h4 style="background-color: #fff;font-size: 36px"><?=$package->name?></h4>
                     </div>
                     <ul class="pricing-content list-unstyled" style="background-color:#17607f;">
-                        <li>
-                            <ul class="list-unstyled list-inline rating">
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star-half-empty fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                            </ul>
-                        </li>
-                        <li><i class="fa fa-gift"></i> Free customisation <span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-inbox"></i> 24 hour support<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-globe"></i> 10 GB Disckspace</li>
-                        <li><i class="fa fa-cloud-upload"></i> Cloud Storage</li>
-                        <li><i class="fa fa-umbrella"></i> Online Protection</li>
+                        <?php foreach($package->offers as $offer) :?>
+                            <li><i class="fa <?= Lookup::item('Icon-Offer',$offer->frontIcon)?>"></i> <?=Lookup::item('Item-Offer',$offer->item)?>
+                                    <?php if($offer->enable == 1):?>
+                                        <span><i class="fa fa-check"></i></span>
+                                    <?php else:?>
+                                        <span></span>
+                                    <?php endif;?>
+                            </li>
+                        <?php endforeach;?>
                     </ul>
                     <div class="pricing-footer" style="background-color:#17607f;">
-                        <h4><i>$</i>5<i>.49</i> <span>Per Month</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>
+                        <h4><i>$</i><?=$package->price?><i>.00</i> <span>Per Month</span></h4>
+<!--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>-->
                         <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect pricing-square-border">
-                    <div class="pricing-head">
-                        <h3>Pro</h3>
-                    </div>
-                    <ul class="pricing-content list-unstyled" style="background-color:#2ec1ff;">
-                        <li>
-                            <ul class="list-unstyled list-inline rating">
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star-half-empty fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                            </ul>
-                        </li>
-                        <li><i class="fa fa-gift"></i> Free customisation<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-inbox"></i> 24 hour support<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-globe"></i> 10 GB Disckspace<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-cloud-upload"></i> Cloud Storage</li>
-                        <li><i class="fa fa-umbrella"></i> Online Protection</li>
-                    </ul>
-                    <div class="pricing-footer" style="background-color:#2ec1ff;">
-                        <h4><i>$</i>8<i>.69</i> <span>Per Month</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>
-                        <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect pricing-square-border">
-                    <div class="pricing-head">
-                        <h3>Premium</h3>
-                    </div>
-                  <ul class="pricing-content list-unstyled" style="background-color:#3d6c7f;">
-                        <li>
-                            <ul class="list-unstyled list-inline rating">
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star-half-empty fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                            </ul>
-                        </li>
-                        <li><i class="fa fa-gift"></i> Free customisation<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-inbox"></i> 24 hour support<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-globe"></i> 10 GB Disckspace<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-cloud-upload"></i> Cloud Storage<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-umbrella"></i> Online Protection</li>
-                    </ul>
-                    <div class="pricing-footer" style="background-color:#3d6c7f;">
-                        <h4><i>$</i>13<i>.99</i> <span>Per Month</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>
-                        <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect pricing-square-border">
-                    <div class="pricing-head">
-                        <h3>Elite</h3>
-                    </div>
-                 <ul class="pricing-content list-unstyled" style="background-color:#2ec1ff;">
-                        <li>
-                            <ul class="list-unstyled list-inline rating">
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                            </ul>
-                        </li>
-                        <li><i class="fa fa-gift"></i> Free customisation<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-inbox"></i> 24 hour support<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-globe"></i> 10 GB Disckspace<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-cloud-upload"></i> Cloud Storage<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-umbrella"></i> Online Protection<span><i class="fa fa-check"></i></span></li>
-                    </ul>
+            <?php endforeach;?>
 
-                    <div class="pricing-footer" style="background-color:#2ec1ff;">
-                        <h4><i>$</i>99<i>.00</i> <span>Per Month</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>
-                        <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
         </div>
-        <!-- </div> -->
-        <style type="text/css">
-            #myList div{ 
-                display:none;
 
-            }
-            #showLess:hover{
-                cursor:pointer;
-                color: red;
-            }
-        </style>
 
         <div class="row margin-bottom-20 pricing-dark" id="myList" style="padding-top:30px;">
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect">
-                    <div class="pricing-head">
-                        <h3>Beginner</h3>
-                    </div>
-                    <ul class="pricing-content list-unstyled" style="background-color:#17607f;">
-                        <!-- <li>
-                            <ul class="list-unstyled list-inline rating">
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star-half-empty fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                            </ul>
-                        </li> -->
-                        <li><i class="fa fa-gift"></i> Free customisation <span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-inbox"></i> 24 hour support<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-globe"></i> 10 GB Disckspace</li>
-                        <li><i class="fa fa-cloud-upload"></i> Cloud Storage</li>
-                        <li><i class="fa fa-umbrella"></i> Online Protection</li>
-                    </ul>
-                    <div class="pricing-footer" style="background-color:#17607f;">
-                        <h4><i>$</i>5<i>.49</i> <span>Per Month</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>
-                        <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect pricing-square-border">
-                    <div class="pricing-head">
-                        <h3>Pro</h3>
-                    </div>
-                    <ul class="pricing-content list-unstyled" style="background-color:#2ec1ff;">
-                        <!-- <li>
-                            <ul class="list-unstyled list-inline rating">
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star-half-empty fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                            </ul>
-                        </li> -->
-                        <li><i class="fa fa-gift"></i> Free customisation<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-inbox"></i> 24 hour support<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-globe"></i> 10 GB Disckspace<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-cloud-upload"></i> Cloud Storage</li>
-                        <li><i class="fa fa-umbrella"></i> Online Protection</li>
-                    </ul>
-                    <div class="pricing-footer" style="background-color:#2ec1ff;">
-                        <h4><i>$</i>8<i>.69</i> <span>Per Month</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>
-                        <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect pricing-square-border">
-                    <div class="pricing-head">
-                        <h3>Premium</h3>
-                    </div>
-                  <ul class="pricing-content list-unstyled" style="background-color:#3d6c7f;">
-                        <!-- <li>
-                            <ul class="list-unstyled list-inline rating">
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star-half-empty fa-2x"></i></li>
-                                <li><i class="fa fa-star-o fa-2x"></i></li>
-                            </ul>
-                        </li> -->
-                        <li><i class="fa fa-gift"></i> Free customisation<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-inbox"></i> 24 hour support<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-globe"></i> 10 GB Disckspace<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-cloud-upload"></i> Cloud Storage<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-umbrella"></i> Online Protection</li>
-                    </ul>
-                    <div class="pricing-footer" style="background-color:#3d6c7f;">
-                        <h4><i>$</i>13<i>.99</i> <span>Per Month</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>
-                        <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect pricing-square-border">
-                    <div class="pricing-head">
-                        <h3>Elite</h3>
-                    </div>
-                 <ul class="pricing-content list-unstyled" style="background-color:#2ec1ff;">
-                        <!-- <li>
-                            <ul class="list-unstyled list-inline rating">
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                                <li><i class="fa fa-star fa-2x"></i></li>
-                            </ul>
-                        </li> -->
-                        <li><i class="fa fa-gift"></i> Free customisation<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-inbox"></i> 24 hour support<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-globe"></i> 10 GB Disckspace<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-cloud-upload"></i> Cloud Storage<span><i class="fa fa-check"></i></span></li>
-                        <li><i class="fa fa-umbrella"></i> Online Protection<span><i class="fa fa-check"></i></span></li>
-                    </ul>
 
-                    <div class="pricing-footer" style="background-color:#2ec1ff;">
-                        <h4><i>$</i>99<i>.00</i> <span>Per Month</span></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>
-                        <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align:center;">
-                <i class="icon-lg rounded-x icon-close" id="showLess" title="Close"></i>
-                <!-- <span aria-hidden="true" id="showLess" class="icon-close"></span> -->
-                <!-- <button class="btn btn-danger" id="showLess" type="button">Hide Packages</button> -->
-            </div>
         </div>
-
+        <?php if($haveMorePackages):?>
         <div style="text-align:center;">
-            <input type="submit" class="btn-u" id="loadMore" value="More Packages"></input>
+            <?php
+                $url = Url::to(['site/more-packages']);
+            ?>
+            <input type="button" class="btn-u" id="loadMore" value="More Packages" onclick="getMorePackages('<?=$url?>')"/>
             <!-- <a class="btn-u" id="loadMore">More Packages</a> -->
             <!-- <button class="btn btn-block btn-skype-inversed rounded" id="loadMore">More Packages</button> -->
            <!-- <button class="btn-u loadMore-button" id="loadMore" type="button">More Packages</button>--> 
-        </div>    
+        </div>
+        <?php endif;?>
     <!-- End Pricing Dark -->
 
     <style type="text/css">
@@ -630,7 +428,7 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
         color: #555;
     }
     .btn-u:hover{
-        background-color: #29abe2;
+        /*background-color: #29abe2;*/
     }
     </style>
 
@@ -639,74 +437,37 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
             <h2>Call Out Packages</h2>
         </div>
         <div class="row margin-bottom-40">
-            <div class="col-md-3 col-sm-6">
+            <?php
+                $current = 1;
+            ?>
+            <?php foreach($toppups as $toppup):?>
+                <?php
+                    $backgroundColor = (($current % 2) === 0)? '#29abe2': '#17607f';
+                ?>
+                <div class="col-md-3 col-sm-6">
                 <div class="pricing hover-effect">
                     <div class="pricing-head">
-                        <h3  style="background-color:#29abe2;">500<span>Call Out Package</span></h3>
+                        <h3  style="background-color:<?=$backgroundColor?>;"><?=$toppup->name?><span>Call Out Package</span></h3>
                     </div>
                     <ul class="pricing-content list-unstyled">
                         <br>
-                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> RM0.20 Per Unit</li>
-                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> 500 Call Out<span></span></li>
+                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> <?=$toppup->unitPrice?> Per Unit</li>
+                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> <?=$toppup->maxCallOut?> Call Out<span></span></li>
                     </ul>
                     <div class="pricing-footer">
-                        <p><h4 style="font-size:30px;">RM&nbsp;100<i></i></h4></p>
+                        <p><h4 style="font-size:30px;">RM&nbsp<?=$toppup->price?><i></i></h4></p>
                         <a class="btn-u" href="#" style="width:100%;"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect">
-                    <div class="pricing-head">
-                        <h3 style="background-color:#17607f;">1,000<span>Call Out Package</span></h3>
-                    </div>
-                    <ul class="pricing-content list-unstyled">
-                        <br>
-                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> RM0.15 Per Unit</li>
-                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> 1,000 Call Out</li>
-                    </ul>
-                    <div class="pricing-footer">
-                        <p><h4 style="font-size:30px;">RM&nbsp;150<i></i></h4></p>
-                        <a class="btn-u" href="#" style="width:100%;"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                   </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect">
-                    <div class="pricing-head">
-                        <h3  style="background-color:#29abe2;">10,000<span>Call Out Package</span></h3>                        
-                    </div>
-                    <ul class="pricing-content list-unstyled">
-                        <br>
-                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> RM&nbsp;0.10 Per Unit</li>
-                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> 10,000 Call Out</li>
-                    </ul>
-                    <div class="pricing-footer">
-                        <p><h4 style="font-size:30px;">RM&nbsp;1,000<i></i></h4></p>
-                        <a class="btn-u" href="#"  style="width:100%;"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="pricing hover-effect">
-                    <div class="pricing-head">
-                        <h3  style="background-color:#17607f;">100,000<span>Call Out Package</span></h3>
-                    </div>
-                    <ul class="pricing-content list-unstyled">
-                        <br>
-                        <li style="font-size:14px;"><i class="icon-tag" style="color:#29abe2;"></i> RM0.05 Per Unit</li>
-                        <li style="font-size:14px;"><i class="icon-action-redo" style="color:#29abe2;"></i> 100,000 Call Out</li>
-                    </ul>
-                    <div class="pricing-footer">
-                        <p><h4 style="font-size:30px;">RM&nbsp;5,000<i></i></h4></p>
-                        <a class="btn-u" href="#" style="width:100%;"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
-                    </div>
-                </div>
-            </div>
+                <?php
+                    $current++;
+                ?>
+            <?php endforeach;?>
         </div>
-        <div style="text-align:center;">
-           <a class="btn-u">More Call Out Packages</a> 
-        </div>
+<!--        <div style="text-align:center;">-->
+<!--           <a class="btn-u">More Call Out Packages</a> -->
+<!--        </div>-->
         <!--End Callout Packages-->
     
     </div><!--/container-->
@@ -1050,6 +811,7 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
 
 <?php $this->beginBlock('JavascriptInit'); ?>
 
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
@@ -1061,25 +823,30 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
         RevolutionSlider.initRSfullScreen();
     });
 </script>
+<script src="<?=$defaultBundle->baseUrl?>/plugins/landing/landing.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-    size_div = $("#myList div").size();
-    x=0;
-    $('#myList div:lt('+x+')').show();
-    $('#loadMore').click(function () {
-        x= (x+18 <= size_div) ? x+18 : size_div;
-        $('#myList div:lt('+x+')').show(0);
-        //$(this).hide();
-        $('input:submit').hide();
+//    $(document).ready(function () {
+//    size_div = $("#myList div").size();
+//    x=0;
+//    $('#myList div:lt('+x+')').show();
+//    $('#loadMore').click(function () {
+//        x= (x+18 <= size_div) ? x+18 : size_div;
+//        $('#myList div:lt('+x+')').show(0);
+//        //$(this).hide();
+//        $('input:submit').hide();
+//
+//    });
+//    $('#showLess').click(function () {
+//        x=(x-18<0) ? 0 : x-18;
+//        $('#myList div').not(':lt('+x+')').hide();
+//        $('input:submit').show();
+//
+//    });
+//});
+</script>
 
-    });
-    $('#showLess').click(function () {
-        x=(x-18<0) ? 0 : x-18;
-        $('#myList div').not(':lt('+x+')').hide();
-        $('input:submit').show();
+<script type="text/javascript">
 
-    });
-});
 </script>
 <!--[if lt IE 9]>
 <script src="<?=$defaultBundle->baseUrl?>/plugins/respond.js"></script>
