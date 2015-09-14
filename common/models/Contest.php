@@ -15,6 +15,8 @@ use Yii;
  * @property string $question
  * @property string $answer
  * @property integer $status
+ * @property integer $updated_at
+ * @property integer $created_at
  */
 class Contest extends \yii\db\ActiveRecord
 {
@@ -31,6 +33,7 @@ class Contest extends \yii\db\ActiveRecord
     {
         return 'contest';
     }
+
 
     /**
      * @inheritdoc
@@ -49,7 +52,7 @@ class Contest extends \yii\db\ActiveRecord
     {
         return [
             [['contest_id', 'question_id', 'question', 'answer'], 'required'],
-            [['contest_id', 'question_id', 'question_type', 'status'], 'integer'],
+            [['contest_id', 'question_id', 'question_type', 'status','created_at','updated_at'], 'integer'],
             [['question', 'answer'], 'string'],
             [['A', 'B', 'C', 'D', 'Correct'], 'safe']
         ];
@@ -68,6 +71,8 @@ class Contest extends \yii\db\ActiveRecord
             'question' => Yii::t('app', 'Question'),
             'answer' => Yii::t('app', 'Answer'),
             'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 

@@ -65,6 +65,7 @@ class PackageController extends Controller
     public function actionCreate()
     {
         $model = new Package();
+        $model->loadDefaultValues();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -132,6 +133,7 @@ class PackageController extends Controller
     {
         $packageId = Yii::$app->request->post('Offer')['package_id'];
         $offerModel = new Offer();
+        $offerModel->loadDefaultValues();
         if ($offerModel->load(Yii::$app->request->post()) && $offerModel->save()) {
             $offerModel = new Offer();
         }

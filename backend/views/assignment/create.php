@@ -4,10 +4,10 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Package */
+/* @var $model common\models\AuthAssignment */
 
-$this->title = Yii::t('app', 'Create Package');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Packages'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Auth Assignment');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Auth Assignments'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

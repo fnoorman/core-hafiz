@@ -2,13 +2,15 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
-/* @var $model common\models\Package */
+/* @var $model common\models\AuthAssignment */
 
-$this->title = Yii::t('app', 'Create Package');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Packages'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('app', 'Update {modelClass}: ', [
+    'modelClass' => 'Auth Assignment',
+]) . ' ' . $model->item_name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Auth Assignments'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->item_name, 'url' => ['view', 'item_name' => $model->item_name, 'user_id' => $model->user_id]];
+$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 
 <div class="wrapper wrapper-content animated fadeIn">
@@ -33,5 +35,3 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
-
-
