@@ -83,15 +83,16 @@ class RoleController extends \yii\web\Controller
     public function actionView($name)
     {
         $model  = new AssignmentForm();
-        $role   = Yii::$app->authManager->getRole($name);
+        $role   = Yii::$app->rightManager->getRole($name);
 
-        $roles  = Yii::$app->authManager->roles;
+        $roles  = Yii::$app->rightManager->roles;
 
-        // $permissions = Yii::$app->authManager->permissions;
+        // $permissions = Yii::$app->rightManager->permissions;
         $permissions = AuthItem::find()->orderBy(['type'=>SORT_ASC])->all();
         $ArrayOfPermissions = ArrayHelper::toArray($permissions);
 
         $assignedPermissions = Yii::$app->authManager->getPermissionsByRole($role->name);
+
         $ArrayOfAssignedPermissions = ArrayHelper::toArray($assignedPermissions);
 
         $ListOfPermission = array_diff(
@@ -113,7 +114,7 @@ class RoleController extends \yii\web\Controller
         );
 
         //Find children
-        $children = Yii::$app->authManager->getChildren($name);
+        $children = Yii::$app->rightManager->getChildren($name);
         $ArrayOfChildren = ArrayHelper::toArray($children);
 
         //Remove children
@@ -128,7 +129,7 @@ class RoleController extends \yii\web\Controller
                 'role'                => $role,
                 'ArrayOfPermissions'  => $ListOfPermission,
                 'model'               => $model,
-                'assignedPermissions' => Yii::$app->authManager->getPermissionsByRole($role->name),
+                'assignedPermissions' => Yii::$app->rightManager->getPermissionsByRole($role->name),
                 'message'             => $this->message,
                 'ArrayOfChildren'     => $ArrayOfChildren,
             ]
@@ -205,6 +206,52 @@ class RoleController extends \yii\web\Controller
         else {
           return $this->actionIndex();
         }
+
+    }
+
+    public function actionLoad()
+    {
+        $roleName = Yii::$app->request->get('name');
+        $type = Yii::$app->request->get('type');
+        $auth = Yii::$app->rightManager;
+        $model = new RoleForm();
+        $role = $auth->getRole($roleName);
+        if(isset($role)){
+            $model->id = true;
+        }
+        $model->name = $role->name;
+        $model->description = $role->description;
+        $roles = Yii::$app->rightManager->roles;
+
+        return $this->render(
+            'index',
+            [
+                'model'   =>$model,
+                'message' =>$this->message,
+                'roles'   =>$roles,
+            ]
+        );
+    }
+
+    public function actionUpdate()
+    {
+        $model = new RoleForm();
+
+        if($model->load(Yii::$app->request->post()) && $model->UpdateRole())
+        {
+            $model = new RoleForm();
+
+        }
+        $roles = Yii::$app->rightManager->roles;
+        return $this->render(
+            'index',
+            [
+                'model'   =>$model,
+                'message' =>$this->message,
+                'roles'   =>$roles,
+            ]
+        );
+
 
     }
 

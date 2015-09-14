@@ -1068,7 +1068,7 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
     $('#myList div:lt('+x+')').show();
     $('#loadMore').click(function () {
         x= (x+18 <= size_div) ? x+18 : size_div;
-        $('#myList div:lt('+x+')').show(2000);
+        $('#myList div:lt('+x+')').show(0);
         //$(this).hide();
         $('input:submit').hide();
 

@@ -2,16 +2,14 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\ContestMainSearch */
+/* @var $searchModel common\models\AuthAssignmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Create Contest');
+$this->title = Yii::t('app', 'Authorization Assignments');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
- 
 <div class="wrapper wrapper-content animated fadeIn">
     <div class="row">
         <div class="col-lg-12">
@@ -28,33 +26,29 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-lg-12">
                             <p>
-                                <?= Html::a(Yii::t('app', 'Create New Contest'), ['create'], ['class' => 'btn btn-success']) ?>
+                                <?= Html::a(Yii::t('app', 'Create Auth Assignment'), ['create'], ['class' => 'btn btn-success']) ?>
                             </p>
                         </div>
                     </div>
                         <?= GridView::widget([
-                        'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
-                        'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
+                            'dataProvider' => $dataProvider,
+                            'filterModel' => $searchModel,
+                            'tableOptions' => ['class'=>'table table-striped'],
+                            'columns' => [
+                                ['class' => 'yii\grid\SerialColumn'],
 
-                                'id',
-                                //'user_id',
-                                'contest_name',
-                                [
-                                    'attribute' => 'status',
-                                    'format'    => 'html',
-                                    'value'     => function($model){
-                                        return $model->statustext;
-                                    }
-                                ],
+                                'item_name',
+                                'user_id',
+                                'created_at',
+
                             ['class' => 'yii\grid\ActionColumn'],
-                        ],
+                            ],
                         ]); ?>
-                    
+
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+
