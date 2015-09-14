@@ -1,7 +1,6 @@
 <?php
 
 namespace common\models;
-use yii\behaviors\TimestampBehavior;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -84,7 +83,7 @@ class ContestMain extends \yii\db\ActiveRecord
 
     public function getStatusText()
     {
-        return Lookup::item('Status-Package',$this->status);
+        return Lookup::item('Contest',$this->status);
     }
 
 
