@@ -42,18 +42,6 @@ class Contest extends \yii\db\ActiveRecord
     {
         return [
             TimestampBehavior::className(),
-
-        ];
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
         ];
     }
 
