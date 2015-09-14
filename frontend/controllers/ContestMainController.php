@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use frontend\models\ContestForm;
 use common\models\Contest;
 use common\models\ContestSearch;
 use common\models\ContestMain;
@@ -11,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\db\Query;
+use yii\web\UploadedFile;
 
 /**
  * ContestmainController implements the CRUD actions for ContestMain model.
@@ -39,6 +41,7 @@ class ContestmainController extends Controller
     public function actionIndex()
     {
         $searchModel = new ContestMainSearch();
+        $model = new ContestForm();
        
         
 
@@ -170,10 +173,21 @@ class ContestmainController extends Controller
      */
     public function actionCreate()
     {
-        $model = new ContestMain();
+        $model = new ContestForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->file_image = UploadedFile::getInstance($model, 'file_image');
+
+            $model->upload();
+          
+                return $this->redirect(['view', 'id' => $model->_id]);
+           
+                //if ($model->upload()) {
+                // file is uploaded successfully
+                //return;
+               // }
+
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -191,8 +205,14 @@ class ContestmainController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+        if ($model->load(Yii::$app->request->post())) {
             return $this->redirect(['view', 'id' => $model->id]);
+           // $model->file_image = UploadedFile::getInstance($model, 'file_image');
+
+            //$model->upload();
+          
+               // return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,

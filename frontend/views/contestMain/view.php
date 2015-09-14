@@ -5,6 +5,8 @@ use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
 
+
+
 /* @var $this yii\web\View */
 /* @var $model common\models\ContestMain */
 
@@ -29,8 +31,8 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                     <div class="row">
                         <div class="col-lg-12">
                             <p>
-                                <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                                <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+                                <?= Html::a(Yii::t('app', '<i class="fa fa-refresh"></i> Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                                <?= Html::a(Yii::t('app', '<i class="fa fa-trash-o"></i> Delete'), ['delete', 'id' => $model->id], [
                                 'class' => 'btn btn-danger',
                                 'data' => [
                                 'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
@@ -38,9 +40,9 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                                 ],
                                 ]) ?>
 
-                               
-                               <a onclick="showContestFullDetails()" class="btn btn-primary pull-right" type="button"><i class="fa fa-check-square"></i> <strong>Contest Full View</strong></a>
-                                <button style="margin-right:5px" onclick="showQuestionForm()" class="btn btn-primary pull-right" type="button"><i class="fa fa-plus-square-o"></i> <strong>Add Question</strong></button> &nbsp;&nbsp; 
+                               <a onclick="" class="btn btn-primary" href="<?= Url::to(['contestmain/index'])?>"><i class="fa fa-home"></i> Home</a>
+                               <a onclick="showContestFullDetails()" class="btn btn-primary pull-right" type="button"><i class="fa fa-check-square"></i> Full View</a>
+                                <button style="margin-right:5px" onclick="showQuestionForm()" class="btn btn-primary pull-right" type="button"><i class="fa fa-plus-square-o"></i> Add Question</button> &nbsp;&nbsp; 
                             </p>
                         </div>
                     </div>
@@ -50,10 +52,27 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                     <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                                'id', 'contest_name', 'status', 'created_at:date'],
+                                'id', 'contest_name', 
+                               // 'status',
+                                [                      // the owner name of the model
+                                'attribute' => 'status',
+                                'value' => $model->statustext,
+                                ],
+                                [
+                                 'attribute' => 'contest_image',
+                                 'format'=> 'raw',
+                                 'value' => $model->image,
+                                ], 
+                                //'contest_image',
+                                'created_at:date'],
                     ]) ?>
 
                 </div>
+               <!--  <img src="http://localhost/Hybrizy/core-hafiz/frontend/web/uploads/5-aaa.jpg"> -->
+                <?php
+                //echo Url::base(true);
+                //echo $model->image;
+                ?>
             </div>
         </div>
     </div>

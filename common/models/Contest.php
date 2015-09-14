@@ -2,6 +2,7 @@
 
 namespace common\models;
 use yii\behaviors\TimestampBehavior;
+use common\models\Lookup;
 
 use Yii;
 
@@ -83,5 +84,10 @@ class Contest extends \yii\db\ActiveRecord
     public static function find()
     {
         return new ContestQuery(get_called_class());
+    }
+
+     public function getStatusText()
+    {
+        return Lookup::item('Contest',$this->status);
     }
 }

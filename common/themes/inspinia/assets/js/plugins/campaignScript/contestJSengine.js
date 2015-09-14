@@ -165,9 +165,12 @@ function getContest() {
  
                     var i, k, l = d.items.length, newLi, newItem, contestAnswer,finalData, A, B, C, D;
 
+                    
+
                     $('<p id="well-place"></p>').appendTo('#fullView_question');
 
-                    for (i = 0; i < l; i++) {
+                    for (i = 0; i < l; i++) {  
+
                     	k = i+1;
                         newDiv = $('<div class="well"></div>');
                         newItem = d.items[i];

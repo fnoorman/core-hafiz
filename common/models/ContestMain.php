@@ -1,9 +1,11 @@
 <?php
 
 namespace common\models;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\behaviors\TimestampBehavior;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
 use common\models\Lookup;
 /**
  * This is the model class for table "contest_main".
@@ -45,7 +47,8 @@ class ContestMain extends \yii\db\ActiveRecord
         return [
             [['user_id', 'contest_name'], 'required'],
             [['user_id', 'status','created_at','updated_at'], 'integer'],
-            [['contest_name'], 'string', 'max' => 31]
+            [['contest_name'], 'string', 'max' => 31],
+            [['contest_image'], 'string', 'max' => 321]
         ];
     }
 
@@ -61,6 +64,7 @@ class ContestMain extends \yii\db\ActiveRecord
             'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'contest_image' => Yii::t('app', 'Banner'),
         ];
     }
 
@@ -86,5 +90,11 @@ class ContestMain extends \yii\db\ActiveRecord
         return Lookup::item('Contest',$this->status);
     }
 
+    public function getImage()
+    {
+        $a = split('/', $this->contest_image);
+        $img = $a[count($a)-1];
+        return Html::img(Url::base(true).'/uploads/'.$img);
+    }
 
 }

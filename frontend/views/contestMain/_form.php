@@ -10,17 +10,19 @@ use yii\widgets\ActiveForm;
 
 
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'user_id')->textInput(['value'=> Yii::$app->user->id]) ?>
+	    <?= $form->field($model, 'user_id')->textInput(['value'=> Yii::$app->user->id]) ?>
 
-    <?= $form->field($model, 'contest_name')->textInput(['maxlength' => true]) ?>
+	    <?= $form->field($model, 'contest_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput(['value'=> '1']) ?>
+	    <?= $form->field($model, 'file_image')->fileInput() ?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+	    <?= $form->field($model, 'status')->textInput(['value'=> '1']) ?>
+
+	    <div class="form-group">
+	     	<?= Html::submitButton('Create', ['class' => 'btn btn-primary', 'name' => 'create-button']) ?>
+	    </div>
 
     <?php ActiveForm::end(); ?>
 

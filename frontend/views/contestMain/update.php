@@ -35,6 +35,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
                     <div style="" class="form-group"><label class="col-lg-2 control-label">Contest Name</label>
                         <div class="col-lg-10"><?= $form->field($model, 'contest_name')->textInput(['maxlength' => true, 'class'=> 'form-control'])->label(false) ?></div>
                     </div>
+
+                 
                     <div style="" class="form-group"><label class="col-lg-2 control-label">Contest Status</label>
                         <div class="col-lg-10">
                             <?= $form->field($model, 'status')->dropDownList(['1'=>'ACTIVE','0'=>'INACTIVE'])->label(false) ?>

@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $searchModel common\models\ContestMainSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Create Contest');
+$this->title = Yii::t('app', 'Contest');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
  
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-lg-12">
                             <p>
-                                <?= Html::a(Yii::t('app', 'Create New Contest'), ['create'], ['class' => 'btn btn-success']) ?>
+                                <?= Html::a(Yii::t('app', '<i class="fa fa-plus-square-o"></i> Create New Contest'), ['create'], ['class' => 'btn btn-success']) ?>
                             </p>
                         </div>
                     </div>
@@ -36,12 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?= GridView::widget([
 
                         'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
+                        //'filterModel' => $searchModel,
                         'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
+                            ['class' => 'yii\grid\SerialColumn','header' => 'No.'],
 
-
-                                'id',
+                               // 'id',
                                 //'user_id',
                                 'contest_name',
                                 [
@@ -51,12 +50,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                         return $model->statustext;
                                     }
                                 ],
-                            ['class' => 'yii\grid\ActionColumn'],
+                                'created_at:date',
+                            ['class' => 'yii\grid\ActionColumn','header' => 'Action'],
 
                         ],
                         ]); ?>
                     
                 </div>
+                <?php
+                //echo Url::base(true);
+                //echo $model->image;
+                ?>
             </div>
         </div>
     </div>

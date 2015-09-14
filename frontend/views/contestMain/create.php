@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ContestMain */
 
-$this->title = Yii::t('app', 'Create Contest Main');
+$this->title = Yii::t('app', 'Create New Contest');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contest Mains'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
