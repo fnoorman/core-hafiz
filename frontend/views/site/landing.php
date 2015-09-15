@@ -76,11 +76,11 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
                             <?=html::a('Logout ('. Yii::$app->user->identity->username .')',['site/logout'], ['data-method' => 'POST'])?>
                         </li>
                     <?php endif;?>
-                    <li class="page-scroll">
+                    <li class="page-scroll" id="cart-list">
                         <a href="#cart" id="cart-button">
                         <i class="search fa search-btn fa-shopping-cart"></i>
                         </a>
-                        <span class="badge badge-red rounded-x" style="top:7px;right:1px;position: absolute">3</span>
+                        <span class="badge badge-red rounded-x" style="top:7px;right:1px;position: absolute">0</span>
                     </li>
                 </ul>
             </div>
@@ -394,7 +394,7 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
                     <div class="pricing-footer" style="background-color:#17607f;">
                         <h4><i>$</i><?=$package->price?><i>.00</i> <span>Per Month</span></h4>
 <!--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>-->
-                        <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
+                        <a href="#packages" class="btn-u btn-brd btn-u-default btn-u-xs" onclick="AddToCart(<?=$package->id?>)"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
                     </div>
                 </div>
             </div>
@@ -735,6 +735,30 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
 }
 </style>
 
+<!-- Small modal -->
+<button class="btn-u hide" data-toggle="modal" data-target=".bs-example-modal-sm" id="btn-ask-for-login">Small Modal</button>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 id="myLargeModalLabel3" class="modal-title">Dear Guest</h4>
+            </div>
+            <div class="modal-body">
+                <p> We are please that you're intend to buy our product. Please kindly login to in order to proceed with your puchase</p>
+                <p> Thank you, your interest in this product is highly appreciated</p>
+
+                <br>
+                <br>
+                <a href="<?=Url::to(['site/login'])?>" class="btn-u" type="button">Click to login</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Small Modal -->
+
 
 
 <!-- Contact Section -->
@@ -826,37 +850,33 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
     });
 </script>
 <script src="<?=$defaultBundle->baseUrl?>/plugins/landing/landing.js"></script>
-<script type="text/javascript">
-//    $(document).ready(function (){
-//        $('#cart-section').hide();
-//
-//        $('#cart-button').click(function (){
-//            console.log('clicked');
-//            $('#cart-section').show();
-//        });
-//
-//    });
-//    $(document).ready(function () {
-//    size_div = $("#myList div").size();
-//    x=0;
-//    $('#myList div:lt('+x+')').show();
-//    $('#loadMore').click(function () {
-//        x= (x+18 <= size_div) ? x+18 : size_div;
-//        $('#myList div:lt('+x+')').show(0);
-//        //$(this).hide();
-//        $('input:submit').hide();
-//
-//    });
-//    $('#showLess').click(function () {
-//        x=(x-18<0) ? 0 : x-18;
-//        $('#myList div').not(':lt('+x+')').hide();
-//        $('input:submit').show();
-//
-//    });
-//});
-</script>
+
 
 <script type="text/javascript">
+
+    function AddToCart(packageId)
+    {
+        console.log ('Package to buy : ' + packageId);
+        var inCart = $('#cart-list').children().filter('span').text();
+        console.log('In Cart = ' + inCart );
+        $total = parseInt(inCart) + 1
+        console.log('Total : ' + $total);
+        $('#cart-list').children().filter('span').text($total);
+        $.ajax({
+            method: "GET",
+            url: "<?=Url::base(true)?>/api/cart/add-package?id="+packageId,
+
+        }).done(function( result ) {
+            console.log('Session Info 0:' + result.session[0]);
+            console.log('Session Info 1:' + result.session[1]);
+            console.log("User is logged in ? " + result.isLoggedIn);
+            if(!result.isLoggedIn)
+            {
+                $('#btn-ask-for-login').trigger('click');
+            }
+
+        });
+    }
 
 </script>
 <!--[if lt IE 9]>
