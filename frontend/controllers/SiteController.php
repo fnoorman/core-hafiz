@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Lookup;
 use Yii;
 use common\models\User;
 use common\models\LoginForm;
@@ -14,6 +15,8 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\Package;
+use common\models\Topup;
 
 /**
  * Site controller
@@ -71,8 +74,19 @@ class SiteController extends Controller
 
     public function actionLanding()
     {
+        $packages = Package::find()->where(['enable'=>1])->limit(4)->orderBy('position')->all();
+        $count = (new \yii\db\Query())->select(['id'])->from('package')->where(['enable'=>1])->count();
+        $haveMorePackages = false;
+        if($count > 4)
+        {
+            $haveMorePackages = true;
+        }
         $this->layout = 'unify/base';
-        return $this->render('landing');
+
+        //Top up packages
+        $topups = Topup::find()->where(['enable'=>1])->limit(4)->orderBy('position')->all();
+
+        return $this->render('landing',['packages'=>$packages,'haveMorePackages'=>$haveMorePackages,'toppups'=>$topups]);
     }
 
     /**
@@ -413,5 +427,11 @@ class SiteController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['orderview']);
+    }
+
+    public function actionMorePackages(){
+        $packages = Package::find()->where(['enable'=>1])->orderBy('position')->offset(4)->all();
+        $result = $this->renderPartial('@backend/views/package/_package_by_row',['packages'=>$packages]);
+        return $result;
     }
 }

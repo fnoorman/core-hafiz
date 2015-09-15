@@ -64,7 +64,8 @@ $custom = CustomInspiniaAsset::register($this);
                                     ],
                                     'code',
                                     'videoMaxSize',
-                                    'duration'
+                                    'duration',
+                                    'position'
 
                                 ],
                             ]) ?>

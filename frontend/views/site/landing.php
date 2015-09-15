@@ -76,8 +76,8 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
                             <?=html::a('Logout ('. Yii::$app->user->identity->username .')',['site/logout'], ['data-method' => 'POST'])?>
                         </li>
                     <?php endif;?>
-                    <li>
-                        <a href="#">
+                    <li class="page-scroll">
+                        <a href="#cart" id="cart-button">
                         <i class="search fa search-btn fa-shopping-cart"></i>
                         </a>
                         <span class="badge badge-red rounded-x" style="top:7px;right:1px;position: absolute">3</span>
@@ -363,7 +363,7 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
 </section>
 <!--  About Section -->
 
-<!-- Services Section -->
+<!-- Packages Section -->
 <section id="packages">
     <div class="container content-lg">
         <div class="title-v1">
@@ -735,6 +735,8 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
 }
 </style>
 
+
+
 <!-- Contact Section -->
 <section id="contact" class="contacts-section">
     <div class="container content-lg">
@@ -825,6 +827,15 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
 </script>
 <script src="<?=$defaultBundle->baseUrl?>/plugins/landing/landing.js"></script>
 <script type="text/javascript">
+//    $(document).ready(function (){
+//        $('#cart-section').hide();
+//
+//        $('#cart-button').click(function (){
+//            console.log('clicked');
+//            $('#cart-section').show();
+//        });
+//
+//    });
 //    $(document).ready(function () {
 //    size_div = $("#myList div").size();
 //    x=0;
