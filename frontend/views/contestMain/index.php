@@ -32,18 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             </p>
                         </div>
                     </div>
-<<<<<<< HEAD
-                        <?= GridView::widget([
-=======
 
-                                            <?= GridView::widget([
->>>>>>> code-hafiz
+                        <?= GridView::widget([
+
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
 
-<<<<<<< HEAD
+
                                 'id',
                                 //'user_id',
                                 'contest_name',
@@ -55,15 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     }
                                 ],
                             ['class' => 'yii\grid\ActionColumn'],
-=======
-                                   // 'id',
-                                    //'user_id',
-                                    'contest_name',
-                                    'status',
-                                    'created_at:date',
 
-                        ['class' => 'yii\grid\ActionColumn'],
->>>>>>> code-hafiz
                         ],
                         ]); ?>
                     

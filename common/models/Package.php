@@ -24,7 +24,7 @@ use yii\helpers\Html;
  * @property integer $updated_at
  * @property integer $create_by
  * @property integer $created_at
- *
+ * @property integer position
  * @property Offer[] $offers
  */
 class Package extends \yii\db\ActiveRecord
@@ -55,7 +55,7 @@ class Package extends \yii\db\ActiveRecord
     {
         return [
             [['maxCallOut', 'maxAllowedCode'], 'required'],
-            [['maxCallOut', 'maxAllowedCode', 'enable', 'minBalance', 'update_by', 'updated_at', 'create_by', 'created_at'], 'integer'],
+            [['maxCallOut', 'maxAllowedCode', 'enable', 'minBalance', 'update_by', 'updated_at', 'create_by', 'created_at','position','price'], 'integer'],
             [['name'], 'string', 'max' => 80],
             [['code'], 'string', 'max' => 19],
             [['videoMaxSize', 'pictureMaxSize'], 'string', 'max' => 7],
@@ -82,6 +82,8 @@ class Package extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Update At'),
             'create_by' => Yii::t('app', 'Create By'),
             'created_at' => Yii::t('app', 'Created At'),
+            'position' => Yii::t('app', 'Position'),
+            'price' => Yii::t('app', 'Price'),
         ];
     }
 

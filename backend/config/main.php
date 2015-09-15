@@ -29,6 +29,11 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'formatter' => [
+            'decimalSeparator' => '.',
+            'thousandSeparator' => ',',
+            'currencyCode' => 'RM',
+        ],
     ],
     'params' => $params,
 ];

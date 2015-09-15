@@ -31,9 +31,10 @@ $this->params['activeMenu'] = $this->title;
                             </p>
                         </div>
                     </div>
-                                            <?= GridView::widget([
+                        <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
+                        'tableOptions'=>['class'=>'table table-striped'],
                         'columns' => [['class' => 'yii\grid\SerialColumn'],
 
 //                            [
@@ -41,7 +42,7 @@ $this->params['activeMenu'] = $this->title;
 //                                'format'=>'raw',
 //                                'headerOptions'=>['width'=>'100px']
 //                            ],
-                        'name',
+                            'name',
                             [
                                 'attribute' => 'maxCallOut',
                                 'format'=>'raw',
@@ -70,6 +71,11 @@ $this->params['activeMenu'] = $this->title;
                                 'value'=> function($model){
                                     return $model->StatusText();
                                 },
+                                'headerOptions'=>['width'=>'100px']
+                            ],
+                            [
+                                'attribute'=>'price',
+                                'format'=>'currency',
                                 'headerOptions'=>['width'=>'100px']
                             ],
 //                        'enable',

@@ -51,6 +51,7 @@ SiteIndexAsset::register($this);
                                 // Important: you need to specify url as 'controller/action',
                                 // not just as 'controller' even if default action is used.
                                 ['label' => 'Package', 'url' => ['package/index'],'icon'=>'fa fa-gift'],
+                                ['label' => 'Top Up', 'url' => ['topup/index'],'icon'=>'fa fa-retweet'],
                                 // 'Products' menu item will be selected as long as the route is 'product/index'
                                 ['label' => 'Lookup', 'url' => ['lookup/index']],
                                 ['label' => 'Campaign', 'url' => ['campaign/campaign']],
@@ -82,7 +83,7 @@ SiteIndexAsset::register($this);
             </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-4">
-                    <h2>This is main title</h2>
+                    <h2><?=$this->title?></h2>
                     <ol class="breadcrumb">
                         <?php
                         echo Breadcrumbs::widget([
