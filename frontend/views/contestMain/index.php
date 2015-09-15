@@ -40,7 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn','header' => 'No.'],
 
+
                                // 'id',
+
                                 //'user_id',
                                 'contest_name',
                                 [
@@ -50,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         return $model->statustext;
                                     }
                                 ],
+
                                 'created_at:date',
                             ['class' => 'yii\grid\ActionColumn','header' => 'Action'],
 
