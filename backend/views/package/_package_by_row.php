@@ -29,7 +29,7 @@ use common\models\Lookup;
             <div class="pricing-footer" style="background-color:#17607f;">
                 <h4><i>$</i><?=$package->price?><i>.00</i> <span>Per Month</span></h4>
                 <!--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cloud Storage magna psum condimentum...</p>-->
-                <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
+                <a href="#" class="btn-u btn-brd btn-u-default btn-u-xs" onclick="AddToCart(<?=$package->id?>)"><i class="fa fa-shopping-cart"></i> Purchase Now</a>
             </div>
         </div>
     </div>

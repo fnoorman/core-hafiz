@@ -26,6 +26,17 @@ return [
         'rightManager' => [
             'class' => 'common\components\DBRights',
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => false,
+            'showScriptName' => false,
+            'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'api/country'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'api/package'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'api/contest'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'api/cart'],
+            ],
+        ],
 
     ],
 ];
