@@ -434,4 +434,10 @@ class SiteController extends Controller
         $result = $this->renderPartial('@backend/views/package/_package_by_row',['packages'=>$packages]);
         return $result;
     }
+
+    public function actionCheckout()
+    {
+        $this->layout = 'checkout';
+
+    }
 }

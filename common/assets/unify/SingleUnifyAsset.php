@@ -23,6 +23,8 @@ class SingleUnifyAsset extends AssetBundle
         "plugins/animate.css",
         "plugins/line-icons/line-icons.css",
         "plugins/font-awesome/css/font-awesome.min.css",
+        'plugins/jquery-steps/css/custom-jquery.steps.css',
+        'plugins/scrollbar/css/jquery.mCustomScrollbar.css',
         "plugins/pace/pace-flash.css",
         "plugins/owl-carousel/owl.carousel.css",
         "plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css",
@@ -30,6 +32,8 @@ class SingleUnifyAsset extends AssetBundle
     ];
     public $js = [
         "plugins/smoothScroll.js",
+        'plugins/jquery-steps/build/jquery.steps.js',
+        'plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js',
         "plugins/jquery.easing.min.js",
         "plugins/pace/pace.min.js",
         "plugins/jquery.parallax.js",
