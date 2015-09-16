@@ -23,9 +23,8 @@ UnifyMediaAsset::register($this);
 $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-target'=>'.one-page-header' ,'class'=>'demo-lightbox-gallery dark'];
 
 ?>
-
 <!--=== Header ===-->
-<nav class="one-page-header navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="one-page-header one-page-header-style-2 navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="menu-container page-scroll">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -36,9 +35,24 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
             </button>
 
             <a class="navbar-brand" href="#intro">
-                <!-- <span>U</span>nify -->
-                <img src="img/logohybrizy2.png" alt="Logo" style="margin-top:-15px;">
+                <span>U</span>nify
+                <!-- <img src="assets/img/logo1.png" alt="Logo"> -->
             </a>
+        </div>
+
+        <div class="lang-block">
+            <a href="javascript:void(0);" class="mega-hover__current" aria-haspopup="true" style="margin-top:0;padding-top: 0">
+                <i class="fa fa-shopping-cart icon-sm" style="color: #29abe2"></i>
+            </a>
+            <span class="badge badge-red rounded-x" style="top:0px;right:25px;position: absolute">0</span>
+            <ul class="mega-hover-list" style="width:150px;margin-top:15px">
+                <li><a href="#">xxxxxxxxxx</a></li>
+                <li><a href="#">xxxxxxxxx</a></li>
+            </ul>
+        </div>
+
+        <div class="top-contact-block">
+            <i class="fa fa-phone fa-1"></i> <a href="tel:0 800 2000 123">0 800 2000 123</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -52,53 +66,19 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
                         <a href="#about">About Us</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#packages">Packages</a>
+                        <a href="#services">Services</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Gallery</a>
+                        <a href="#news">News</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Contact Us</a>
+                        <a href="#portfolio">Portfolio</a>
                     </li>
-                                       
-                    <?php if(Yii::$app->user->isGuest):?>                        
-                        <li class="page-scroll">
-                            <a href="<?php echo Url::to(['site/signup']); ?>">Signup</a>
-                        </li>
-                        <li class="page-scroll">
-                            <a href="<?php echo Url::to(['site/login']); ?>">Login</a>
-                        </li>
-                    <?php else:?>
-                        <li class="page-scroll">
-                            <a href="<?php echo Url::to(['site/index']);?>">My Profile</a>
-                        </li>
-                        <li class="page-scroll">
-                            <?=html::a('Logout ('. Yii::$app->user->identity->username .')',['site/logout'], ['data-method' => 'POST'])?>
-                        </li>
-                    <?php endif;?>
-                    <li class="page-scroll" id="cart-list">
-                        <a href="#cart" id="cart-button">
-                        <i class="search fa search-btn fa-shopping-cart"></i>
-                        </a>
-                        <span class="badge badge-red rounded-x" style="top:7px;right:1px;position: absolute">0</span>
-                        <ul class="list-unstyled badge-open mCustomScrollbar" data-mcs-theme="minimal-dark">
-                            <li>
-
-                                <button type="button" class="close">×</button>
-                                <div class="overflow-h">
-                                    <span>Black Glasses</span>
-                                    <small>1 x $400.00</small>
-                                </div>
-                            </li>
-                            <li>
-
-                                <button type="button" class="close">×</button>
-                                <div class="overflow-h">
-                                    <span>Black Glasses</span>
-                                    <small>1 x $400.00</small>
-                                </div>
-                            </li>
-                        </ul>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="../index.html">Main</a>
                     </li>
                 </ul>
             </div>
@@ -109,9 +89,6 @@ $this->params['page_body_prop'] = ['id'=>'body', 'data-spy'=>'scroll', 'data-tar
 </nav>
 <!--=== End Header ===-->
 
-<?php if(isset($referEmail)) { ?>
-<div> <center><?=$referEmail; ?></center></div>
-<?php }?>
 
 <!-- Intro Section -->
 <section id="intro" class="intro-section">
