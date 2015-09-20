@@ -33,25 +33,43 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
-        'columns' => [
+                        'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
+                        [
+                          'attribute' => 'id',
+                          'format'=>'raw',
+                          'headerOptions'=>['width'=>'80px']
+                        ],
+                        [
+                          'attribute' => 'geoZoneId',
+                          'format'=>'raw',
+                          'headerOptions'=>['width'=>'300px']
+                        ],
+                        [
+                          'attribute' => 'name',
+                          'format'=>'raw',
+                          'headerOptions'=>['width'=>'300px']
+                        ],
+                        [
+                          'attribute' => 'rate',
+                          'format'=>'raw',
+                          'headerOptions'=>['width'=>'100px']
+                        ],
+                        [
+                          'attribute' => 'type',
+                          'format'=>'raw',
+                          'headerOptions'=>['width'=>'150px']
+                        ],
 
-                                    'id',
-            'geoZoneId',
-            'name',
-            'rate',
-            'type',
-            // 'created_at',
-            // 'updated_at',
-
+                        // 'created_at',
+                        // 'updated_at',
                         ['class' => 'yii\grid\ActionColumn'],
                         ],
                         ]); ?>
-                    
+
                 </div>
             </div>
         </div>
     </div>
 
 </div>
-

@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Taxclass */
@@ -10,20 +10,35 @@ use yii\widgets\ActiveForm;
 
 
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'fieldConfig' => [
+            'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+        ],
+        'errorSummaryCssClass' => 'alert alert-danger'
+    ]); ?>
+    <?= $form->errorSummary($model); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+        <div class="col-lg-4">
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?php if(isset($model->id)):?>
+        <?= $form->field($model,'created_at')->hiddenInput(['value'=>$model->created_at])->label(false) ?>
+        <?= $form->field($model,'updated_at',[])->hiddenInput(['value'=>$model->updated_at])->label(false) ?>
+    <?php else:?>
+        <?= $form->field($model,'created_at')->hiddenInput(['value'=>$model->created_at])->label(false) ?>
+        <?= $form->field($model,'updated_at',[])->hiddenInput(['value'=>$model->updated_at])->label(false) ?>
+    <?php endif;?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
-
-

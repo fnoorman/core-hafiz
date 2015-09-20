@@ -3,7 +3,9 @@
 namespace common\models;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 /**
  * This is the model class for table "tax_class".
  *
@@ -23,13 +25,21 @@ class Taxclass extends \yii\db\ActiveRecord
         return 'tax_class';
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+
+        ];
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['title', 'description', 'created_at', 'updated_at'], 'required'],
+            [['title', 'description'], 'required'],
             [['created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 32],
             [['description'], 'string', 'max' => 255]

@@ -3,13 +3,16 @@
 namespace common\models;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 /**
  * This is the model class for table "geo_zone".
  *
  * @property integer $id
  * @property string $name
  * @property string $description
+ * @property country $country
  * @property integer $updated_at
  * @property integer $created_at
  */
@@ -23,13 +26,22 @@ class Geozone extends \yii\db\ActiveRecord
         return 'geo_zone';
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+
+        ];
+    }
+
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['name', 'description', 'updated_at', 'created_at'], 'required'],
+            [['name', 'description'], 'required'],
             [['updated_at', 'created_at'], 'integer'],
             [['name', 'description'], 'string', 'max' => 255]
         ];

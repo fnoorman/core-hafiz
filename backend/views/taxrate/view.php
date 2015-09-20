@@ -44,13 +44,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                                'id',
-            'geoZoneId',
-            'name',
-            'rate',
-            'type',
-            'created_at',
-            'updated_at',
+                    'id',
+                    'geoZoneId',
+                    'name',
+                    'rate',
+                    'type',
+                    'created_at:datetime',
+                    'updated_at:datetime',
                     ],
                     ]) ?>
                 </div>
@@ -59,4 +59,3 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
-

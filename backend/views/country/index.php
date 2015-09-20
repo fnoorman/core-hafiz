@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\GeozoneSearch */
+/* @var $searchModel common\models\CountrySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Geozones');
+$this->title = Yii::t('app', 'Countries');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wrapper wrapper-content animated fadeIn">
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-lg-12">
                             <p>
-                                <?= Html::a(Yii::t('app', 'Create Geozone'), ['create'], ['class' => 'btn btn-success']) ?>
+                                <?= Html::a(Yii::t('app', 'Create Country'), ['create'], ['class' => 'btn btn-success']) ?>
                             </p>
                         </div>
                     </div>
@@ -36,14 +36,30 @@ $this->params['breadcrumbs'][] = $this->title;
                         'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         [
-                          'attribute' => 'id',
-                          'format'=>'raw',
-                          'headerOptions'=>['width'=>'80px']
+                            'attribute' => 'id',
+                            'format'=>'raw',
+                            'headerOptions'=>['width'=>'80px']
                         ],
-                        'name',
-                        'description',
-                        // 'updated_at',
-                        // 'created_at',
+                        [
+                            'attribute' => 'name',
+                            'format'=>'raw',
+                            'headerOptions'=>['width'=>'320px']
+                        ],
+                        [
+                            'attribute' => 'iso_code_2',
+                            'format'=>'raw',
+                            'headerOptions'=>['width'=>'100px']
+                        ],
+                        [
+                            'attribute' => 'iso_code_3',
+                            'format'=>'raw',
+                            'headerOptions'=>['width'=>'100px']
+                        ],
+
+                        'address_format:ntext',
+                        // 'postcode_required',
+                        // 'status',
+
                         ['class' => 'yii\grid\ActionColumn'],
                         ],
                         ]); ?>

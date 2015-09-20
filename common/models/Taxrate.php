@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "tax_rate".
@@ -25,14 +26,22 @@ class Taxrate extends \yii\db\ActiveRecord
         return 'tax_rate';
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+
+        ];
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['geoZoneId', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'type', 'created_at', 'updated_at'], 'required'],
+            [['geoZoneId'], 'integer'],
+            [['name', 'type'], 'required'],
             [['rate'], 'number'],
             [['name'], 'string', 'max' => 32],
             [['type'], 'string', 'max' => 1]
@@ -46,7 +55,7 @@ class Taxrate extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'geoZoneId' => Yii::t('app', 'Geo Zone ID'),
+            'geoZoneId' => Yii::t('app', 'Geo Zone'),
             'name' => Yii::t('app', 'Name'),
             'rate' => Yii::t('app', 'Rate'),
             'type' => Yii::t('app', 'Type'),

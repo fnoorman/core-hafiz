@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Taxclass */
+/* @var $model common\models\Zone */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Taxclasses'), 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Zones'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -44,11 +44,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-                    'id',
-                    'title',
-                    'description',
-                    'created_at:datetime',
-                    'updated_at:datetime',
+                                'id',
+            'country_id',
+            'name',
+            'code',
+            'status',
                     ],
                     ]) ?>
                 </div>
@@ -57,3 +57,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 </div>
+
