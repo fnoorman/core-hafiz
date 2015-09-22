@@ -3,15 +3,18 @@
 namespace common\models;
 
 use Yii;
+use common\models\Taxrate;
 
 /**
  * This is the model class for table "tax_rule".
  *
  * @property integer $id
- * @property integer $tax_class_id
  * @property integer $tax_rate_id
  * @property string $based
  * @property integer $priority
+ * @property integer $tax_class_id
+ *
+ * @property TaxClass $taxClass
  */
 class Taxrule extends \yii\db\ActiveRecord
 {
@@ -29,8 +32,8 @@ class Taxrule extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tax_class_id', 'tax_rate_id', 'based'], 'required'],
-            [['tax_class_id', 'tax_rate_id', 'priority'], 'integer'],
+            [['tax_rate_id', 'based', 'tax_class_id'], 'required'],
+            [['tax_rate_id', 'priority', 'tax_class_id'], 'integer'],
             [['based'], 'string', 'max' => 10]
         ];
     }
@@ -42,12 +45,27 @@ class Taxrule extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'tax_class_id' => Yii::t('app', 'Tax Class ID'),
             'tax_rate_id' => Yii::t('app', 'Tax Rate ID'),
             'based' => Yii::t('app', 'Based'),
             'priority' => Yii::t('app', 'Priority'),
+            'tax_class_id' => Yii::t('app', 'Tax Class ID'),
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTaxClass()
+    {
+        return $this->hasOne(TaxClass::className(), ['id' => 'tax_class_id']);
+    }
+
+    public function getTaxRateName()
+    {
+        $tr = Taxrate::findOne($this->tax_rate_id);
+        return $tr->name;
+    }
+
 
     /**
      * @inheritdoc

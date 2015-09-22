@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\ZoneSearch */
+/* @var $searchModel common\models\ZonetogeozoneSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Zones');
+$this->title = Yii::t('app', 'Zone To Geo Zones');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wrapper wrapper-content animated fadeIn">
@@ -25,51 +25,46 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-lg-12">
-                            <p>
-                                <?= Html::a(Yii::t('app', 'Create Zone'), ['create'], ['class' => 'btn btn-success']) ?>
-                            </p>
+                            <!-- <p>
+                                <?php //= Html::a(Yii::t('app', 'Create Zonetogeozone'), ['create'], ['class' => 'btn btn-success']) ?>
+                            </p> -->
                         </div>
                     </div>
-                      <?= GridView::widget([
+                        <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
                         [
                             'attribute' => 'id',
-                            'format'=>'raw',
                             'headerOptions'=>['width'=>'80px']
                         ],
                         [
-                            'attribute' => 'country_id',
-                            'format'=>'raw',
-                            'value'=> function($model){
-                                return $model->getCountryName(). " ". "(".$model->country_id.")";
-                            },
-                            'headerOptions'=>['width'=>'250px']
+                          'attribute' => 'country_id',
+                          'label'=> 'Country',
+                          'value'=> function($model){
+                              return $model->getCountryName();
+                              }
                         ],
                         [
-                            'attribute' => 'name',
-                            'format'=>'raw',
-                            'headerOptions'=>['width'=>'400px']
+                          'attribute' => 'zone_id',
+                          'label'=> 'Zone',
+                          'value'=> function($model){
+                              return $model->getZoneName();
+                              }
                         ],
                         [
-                            'attribute' => 'code',
-                            'format'=>'raw',
-                            'headerOptions'=>['width'=>'90px']
+                          'attribute' => 'geo_zone_id',
+                          'label'=> 'Geo Zone',
+                          'value'=> function($model){
+                              return $model->getGeozoneName();
+                              }
                         ],
-
-                        [
-                            'attribute' => 'status',
-                            'format'=>'raw',
-                            'value'=> function($model){
-                                return $model->StatusText();
-                            },
-                            'headerOptions'=>['width'=>'100px']
-                        ],
+                        // 'created_at:datetime',
+                        // 'updated_at:datetime',
                         ['class' => 'yii\grid\ActionColumn'],
                         ],
-                      ]); ?>
+                        ]); ?>
 
                 </div>
             </div>

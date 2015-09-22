@@ -3,17 +3,20 @@
 namespace common\models;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
+
 /**
  * This is the model class for table "tax_class".
  *
  * @property integer $id
  * @property string $title
  * @property string $description
+ * @property integer $tax_rate_id
+ * @property string $type
+ * @property integer $priority
  * @property integer $created_at
  * @property integer $updated_at
+ *
+ * @property TaxRule[] $taxRules
  */
 class Taxclass extends \yii\db\ActiveRecord
 {
@@ -25,24 +28,17 @@ class Taxclass extends \yii\db\ActiveRecord
         return 'tax_class';
     }
 
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-
-        ];
-    }
-
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['title', 'description'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
+            [['title', 'description', 'tax_rate_id', 'type', 'priority', 'created_at', 'updated_at'], 'required'],
+            [['tax_rate_id', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 32],
-            [['description'], 'string', 'max' => 255]
+            [['description'], 'string', 'max' => 255],
+            [['type'], 'string', 'max' => 1]
         ];
     }
 
@@ -55,9 +51,20 @@ class Taxclass extends \yii\db\ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
+            'tax_rate_id' => Yii::t('app', 'Tax Rate'),
+            'type' => Yii::t('app', 'Type'),
+            'priority' => Yii::t('app', 'Priority'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTaxRules()
+    {
+        return $this->hasMany(TaxRule::className(), ['tax_class_id' => 'id']);
     }
 
     /**

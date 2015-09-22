@@ -4,17 +4,18 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 /**
- * This is the model class for table "geo_zone".
+ * This is the model class for table "{{%geo_zone}}".
  *
  * @property integer $id
  * @property string $name
  * @property string $description
- * @property country $country
  * @property integer $updated_at
  * @property integer $created_at
+ *
+ * @property ZoneToGeozone[] $zoneToGeozones
  */
 class Geozone extends \yii\db\ActiveRecord
 {
@@ -23,7 +24,7 @@ class Geozone extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'geo_zone';
+        return '{{%geo_zone}}';
     }
 
     public function behaviors()
@@ -33,7 +34,6 @@ class Geozone extends \yii\db\ActiveRecord
 
         ];
     }
-
 
     /**
      * @inheritdoc
@@ -62,6 +62,16 @@ class Geozone extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getZoneToGeozones()
+    {
+        return $this->hasMany(ZoneToGeozone::className(), ['geo_zone_id' => 'id']);
+    }
+
+    
+
+    /**
      * @inheritdoc
      * @return GeoZoneQuery the active query used by this AR class.
      */
@@ -69,4 +79,6 @@ class Geozone extends \yii\db\ActiveRecord
     {
         return new GeoZoneQuery(get_called_class());
     }
+
+
 }

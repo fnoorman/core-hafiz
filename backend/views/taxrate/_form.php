@@ -2,10 +2,14 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
+use yii\helpers\ArrayHelper;
+use common\models\Geozone;
 /* @var $this yii\web\View */
 /* @var $model common\models\Taxrate */
 /* @var $form yii\widgets\ActiveForm */
+use common\assets\inspinia\CustomInspiniaAsset;
+$custom = CustomInspiniaAsset::register($this);
+
 ?>
 
 
@@ -19,9 +23,7 @@ use yii\bootstrap\ActiveForm;
     <?= $form->errorSummary($model); ?>
 
     <div class="row">
-        <div class="col-lg-2">
-            <?= $form->field($model, 'geoZoneId')->textInput() ?>
-        </div>
+
         <div class="col-lg-5">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         </div>
@@ -29,8 +31,32 @@ use yii\bootstrap\ActiveForm;
             <?= $form->field($model, 'rate')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-lg-3">
-            <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
+
+            <?php echo $form->field($model, 'type')->dropDownList(['P' => 'Percentage', 'F' => 'Fixed Amount'],[
+
+                // 'data-placeholder'=>'Choose permission...',
+                'class'           =>'chosen-select',
+                'style'           =>'width:330px;',
+                'tabindex'        =>'3',
+                'prompt'          =>'Choose Type'
+            ]); ?>
+
         </div>
+
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <?= $form->field($model, 'geoZoneId')
+             ->dropDownList(ArrayHelper::map(Geozone::find()->all(), 'id', 'name'),[
+
+                 // 'data-placeholder'=>'Choose permission...',
+                 'class'           =>'chosen-select',
+                 'style'           =>'width:330px;',
+                 'tabindex'        =>'3',
+                 'prompt'          =>'Choose Country'
+             ])
+        ?>
+      </div>
     </div>
 
     <?php if(isset($model->id)):?>
@@ -46,3 +72,28 @@ use yii\bootstrap\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    <?php $this->beginBlock('JavascriptInit'); ?>
+
+    <!-- Chosen -->
+
+    <script src="<?=$custom->baseUrl?>/js/plugins/chosen/chosen.jquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+        });
+
+    </script>
+
+    <?php $this->endBlock(); ?>

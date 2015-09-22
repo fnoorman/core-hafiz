@@ -4,7 +4,6 @@ namespace common\models;
 
 use Yii;
 use common\models\Lookup;
-use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\Html;
 

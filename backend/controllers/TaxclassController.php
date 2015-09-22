@@ -8,6 +8,7 @@ use common\models\TaxclassSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\Taxrule;
 
 /**
  * TaxclassController implements the CRUD actions for Taxclass model.
@@ -49,8 +50,13 @@ class TaxclassController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $classtaxRule = new Taxrule;
+        $alltaxrule = $model->taxRules;
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'classtaxRule' => $classtaxRule,
+            'alltaxrule' => $alltaxrule,
         ]);
     }
 
@@ -102,6 +108,23 @@ class TaxclassController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionAddRule()
+    {
+        $id = Yii::$app->request->post('tax')['id'];
+        $classtaxRule = new Taxrule();
+        if ($classtaxRule->load(Yii::$app->request->post()) && $classtaxRule->save()) {
+            $classtaxRule = new Taxrule();
+        }
+        return $this->redirect(['view', 'id' => $id]);
+    }
+
+    public function actionDeleteRule($tax_class_id,$id)
+    {
+        Taxrule::findOne($tax_class_id)->delete();
+        return $this->redirect(['view', 'id' => $id]);
+
     }
 
     /**

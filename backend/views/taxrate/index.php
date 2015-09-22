@@ -9,6 +9,7 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('app', 'Taxrates');
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="wrapper wrapper-content animated fadeIn">
     <div class="row">
@@ -40,10 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
                           'format'=>'raw',
                           'headerOptions'=>['width'=>'80px']
                         ],
+
                         [
                           'attribute' => 'geoZoneId',
-                          'format'=>'raw',
-                          'headerOptions'=>['width'=>'300px']
+                          'label'=> 'Geo Zone',
+                          'value'=> function($model){
+                              return $model->getGeozoneName();
+                              }
                         ],
                         [
                           'attribute' => 'name',
@@ -58,6 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                           'attribute' => 'type',
                           'format'=>'raw',
+                          //'value'=> if($model->type == "P"): "Percentage"; else : "Fixed Amount"; endif;
                           'headerOptions'=>['width'=>'150px']
                         ],
 

@@ -2,10 +2,15 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use common\models\Country;
+use common\models\Zone;
+use yii\helpers\ArrayHelper;
+use common\assets\inspinia\CustomInspiniaAsset;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Geozone */
 /* @var $form yii\widgets\ActiveForm */
+$custom = CustomInspiniaAsset::register($this);
 ?>
 
 
@@ -27,8 +32,9 @@ use yii\bootstrap\ActiveForm;
         <div class="col-lg-4">
             <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
         </div>
-        
+
     </div>
+    
 
 
 
@@ -47,3 +53,28 @@ use yii\bootstrap\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    <?php $this->beginBlock('JavascriptInit'); ?>
+
+    <!-- Chosen -->
+
+    <script src="<?=$custom->baseUrl?>/js/plugins/chosen/chosen.jquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var config = {
+                '.chosen-select'           : {},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }
+
+        });
+
+    </script>
+
+    <?php $this->endBlock(); ?>

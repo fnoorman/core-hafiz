@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use common\models\Lookup;
+use common\models\Country;
 use yii\helpers\ArrayHelper;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\Html;
@@ -54,6 +55,8 @@ class Zone extends \yii\db\ActiveRecord
         ];
     }
 
+
+
     /**
      * @inheritdoc
      * @return ZoneQuery the active query used by this AR class.
@@ -63,10 +66,16 @@ class Zone extends \yii\db\ActiveRecord
         return new ZoneQuery(get_called_class());
     }
 
-    public function StatusDropDownOptions()
+
+    public function getCountryName()
+    {
+        $rs = Country::findOne($this->country_id);
+        return $rs->name;
+    }
+
+    public function StatusText()
     {
         $statusLookup = Lookup::items('Status-Package');
-        return $statusLookup;
-        //return ArrayHelper::map($statusLookup,'code','name');
+        return $statusLookup[$this->status];
     }
 }

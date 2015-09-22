@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use common\models\Geozone;
 
 /**
  * This is the model class for table "tax_rate".
@@ -41,7 +42,7 @@ class Taxrate extends \yii\db\ActiveRecord
     {
         return [
             [['geoZoneId'], 'integer'],
-            [['name', 'type'], 'required'],
+            [['type'], 'required'],
             [['rate'], 'number'],
             [['name'], 'string', 'max' => 32],
             [['type'], 'string', 'max' => 1]
@@ -64,6 +65,19 @@ class Taxrate extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getGeozoneName()
+    {
+        $gz = Geozone::findOne($this->geoZoneId);
+        return $gz->name;
+    }
+
+    public function StatusText()
+    {
+        $statusLookup = Lookup::items('taxrate');
+        return $statusLookup[$this->type];
+    }
+
+
     /**
      * @inheritdoc
      * @return TaxRateQuery the active query used by this AR class.
@@ -72,4 +86,10 @@ class Taxrate extends \yii\db\ActiveRecord
     {
         return new TaxRateQuery(get_called_class());
     }
+
+
+
+
+
+
 }

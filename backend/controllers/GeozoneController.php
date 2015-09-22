@@ -8,7 +8,8 @@ use common\models\GeozoneSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use common\models\Country;
+use common\models\Zonetogeozone;
 /**
  * GeozoneController implements the CRUD actions for Geozone model.
  */
@@ -49,8 +50,13 @@ class GeozoneController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $zoneModel = new Zonetogeozone();
+        $allzonetogeozone = $model->zoneToGeozones;
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'zoneModel' => $zoneModel,
+            'allzonetogeozone' => $allzonetogeozone,
         ]);
     }
 
@@ -62,8 +68,7 @@ class GeozoneController extends Controller
     public function actionCreate()
     {
         $model = new Geozone();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save())  {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -119,4 +124,27 @@ class GeozoneController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionAddZone()
+    {
+
+        $id = Yii::$app->request->post('zone')['id'];
+        $zoneModel = new Zonetogeozone();
+        if ($zoneModel->load(Yii::$app->request->post()) && $zoneModel->save()) {
+            $zoneModel = new Zonetogeozone();
+        }
+
+        return $this->redirect(['view', 'id' => $id]);
+
+
+    }
+
+    public function actionDeleteZone($zone_to_geozone_id,$id)
+    {
+        Zonetogeozone::findOne($zone_to_geozone_id)->delete();
+        return $this->redirect(['view', 'id' => $id]);
+
+    }
+
+
 }

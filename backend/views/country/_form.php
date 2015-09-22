@@ -39,9 +39,9 @@ $custom = CustomInspiniaAsset::register($this);
 
               // 'data-placeholder'=>'Choose permission...',
               'class'           =>'chosen-select',
-//                    'style'           =>'width:200px;',
+              'style'           =>'width:200px;',
               'tabindex'        =>'4',
-              'prompt'          =>'Choose ACTIVE or INACTIVE...'
+              'prompt'          =>'Please Choose'
 
 
           ]) ?>

@@ -56,6 +56,7 @@ SiteIndexAsset::register($this);
                                 ['label' => 'Lookup', 'url' => ['lookup/index']],
                                 ['label' => 'Discount', 'url' => ['discount/index']],
                                 ['label' => 'Geo Zone', 'url' => ['geozone/index']],
+                                ['label' => 'Zone to Geozone', 'url' => ['zonetogeozone/index']],
                                 ['label' => 'Country List', 'url' => ['country/index']],
                                 ['label' => 'Zone List', 'url' => ['zone/index']],
                                 ['label' => 'Tax', 'url' => '','items' => [
