@@ -34,11 +34,11 @@ class Taxclass extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'tax_rate_id', 'type', 'priority', 'created_at', 'updated_at'], 'required'],
+            [['title', 'description'], 'required'],
             [['tax_rate_id', 'priority', 'created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 32],
             [['description'], 'string', 'max' => 255],
-            [['type'], 'string', 'max' => 1]
+            [['based'], 'string', 'max' => 1]
         ];
     }
 
