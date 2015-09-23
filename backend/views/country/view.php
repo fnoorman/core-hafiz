@@ -40,23 +40,30 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
 
 
-
-                    <?= DetailView::widget([
-                    'model' => $model,
-                    'attributes' => [
-                                'id',
-            'name',
-            'iso_code_2',
-            'iso_code_3',
-            'address_format:ntext',
-            'postcode_required',
-            'status',
-                    ],
-                    ]) ?>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <?= DetailView::widget([
+                            'model' => $model,
+                            'attributes' => [
+                            'id',
+                            'name',
+                            'iso_code_2',
+                            'iso_code_3',
+                            'address_format:ntext',
+                            'postcode_required',
+                            [
+                              'attribute' => 'status',
+                              'label'=> 'Status',
+                              'value'=>
+                                   $model->StatusText()
+                            ],
+                            ],
+                            ]) ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
-
