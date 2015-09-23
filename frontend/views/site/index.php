@@ -286,16 +286,16 @@ $this->title = 'My Yii Application';
                 <div class="col-lg-4">
                     <div class="ibox-content">
                       <div class="ibox-title">
-                          <h5>Package Purchased</h5>
+                          <h5>Code 7845</h5> <span class="label label-warning" style="float:right">Active</span>
                       </div>
 
                       <div class="ibox float-e-margins" >
                           <div class="ibox-title"  style=" border-left: solid #f8ac59; border-bottom: solid 1px #e7eaec;">
 
                               <p>
-                              <h3>Free Package</h3>
+
                               <table class="table">
-                                <tbody>
+                                <tbody >
                                  <tr>
                                    <td>
                                      Total Callouts :
@@ -314,10 +314,34 @@ $this->title = 'My Yii Application';
                                  </tr>
                                  <tr>
                                    <td>
+                                     Purchased Date :
+                                   </td>
+                                   <td align="right">
+                                     03-02-2015
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
                                      Expired Date :
                                    </td>
                                    <td align="">
                                      <span class="label label-warning" style="float:right">03-09-2015</span>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
+                                     Campaign Title :
+                                   </td>
+                                   <td align="right">
+                                     Video Contest
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
+                                     Campaign Type :
+                                   </td>
+                                   <td align="right">
+                                     Video
                                    </td>
                                  </tr>
                                 </tbody>
@@ -334,22 +358,20 @@ $this->title = 'My Yii Application';
                           </div>
 
                           <div class="ibox-content collapse" style=" border-left: solid #f8ac59; border-bottom: 1px #e7eaec; border-top: 1px #e7eaec;">
-                            <h3>  Hybrizy Code </h3>
-                            1254 <br>
-                            1285 <br>
-                            1478 <br>
-                            1463 <br>
-                            1499
+                            <h3>  Campaign Description </h3>
+                            Description
                           </div>
                       </div>
 
-
+                      <div class="ibox-title">
+                          <h5>Code 6398</h5> <span class="label label-danger" style="float:right">Inactive</span>
+                      </div>
                       <div class="ibox float-e-margins" >
                           <div class="ibox-title"  style=" border-left: solid #ff0000; border-bottom: solid 1px #e7eaec;">
 
                               <p>
 
-                              <h3>Package 1</h3>
+
                               <table class="table">
                                 <tbody>
                                  <tr>
@@ -370,10 +392,34 @@ $this->title = 'My Yii Application';
                                  </tr>
                                  <tr>
                                    <td>
+                                     Purchased Date :
+                                   </td>
+                                   <td align="right">
+                                     03-03-2015
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
                                      Expired Date :
                                    </td>
                                    <td align="">
                                      <span class="label label-danger"  style="float:right">03-08-2015</span>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
+                                     Campaign Title :
+                                   </td>
+                                   <td align="right">
+                                     Customers Reviews
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
+                                     Campaign Type :
+                                   </td>
+                                   <td align="right">
+                                     Reviews
                                    </td>
                                  </tr>
                                 </tbody>
@@ -390,21 +436,20 @@ $this->title = 'My Yii Application';
                           </div>
 
                           <div class="ibox-content collapse" style=" border-left: solid #ff0000; border-bottom: 1px #e7eaec; border-top: 1px #e7eaec;">
-                            <h3>  Hybrizy Code </h3>
+                            <h3>  Campaign Description </h3>
 
-                            3454 <br>
-                            3585 <br>
-                            3678 <br>
-                            3763 <br>
-                            3899
+                            Description
                           </div>
                       </div>
 
+                      <div class="ibox-title">
+                          <h5>Code 1234 </h5> <span class="label label-primary" style="float:right">Active</span>
+                      </div>
                       <div class="ibox float-e-margins" >
                           <div class="ibox-title"  style=" border-left: solid #1ab394; border-bottom: solid 1px #e7eaec;">
 
                               <p>
-                              <h3>Package 2</h3>
+
                               <table class="table">
                                 <tbody>
                                  <tr>
@@ -425,10 +470,34 @@ $this->title = 'My Yii Application';
                                  </tr>
                                  <tr>
                                    <td>
+                                     Purchased Date :
+                                   </td>
+                                   <td align="right">
+                                     03-12-2016
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
                                      Expired Date :
                                    </td>
                                    <td align="">
                                      <span class="label label-primary" style="float:right">03-12-2016</span>
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
+                                     Campaign Title :
+                                   </td>
+                                   <td align="right">
+                                    Product Reviews
+                                   </td>
+                                 </tr>
+                                 <tr>
+                                   <td>
+                                     Campaign Type :
+                                   </td>
+                                   <td align="right">
+                                     Reviews
                                    </td>
                                  </tr>
                                 </tbody>
@@ -443,12 +512,8 @@ $this->title = 'My Yii Application';
                               </p>
                           </div>
                           <div class="ibox-content collapse" style=" border-left: solid #1ab394; border-bottom: 1px #e7eaec; border-top: 1px #e7eaec;">
-                            <h3>  Hybrizy Code </h3>
-                            4454 <br>
-                            4585 <br>
-                            4678 <br>
-                            4763 <br>
-                            4899
+                            <h3>  Campaign Description </h3>
+                            Description 
                           </div>
                       </div>
 
@@ -459,7 +524,7 @@ $this->title = 'My Yii Application';
               <div class="ibox-content">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Hybrizy Code Analysis </h5>
+                        <h5>Hybrizy Code Analytics </h5>
                         <div class="ibox-tools">
                             <!-- <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
