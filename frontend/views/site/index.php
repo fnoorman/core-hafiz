@@ -513,7 +513,7 @@ $this->title = 'My Yii Application';
                           </div>
                           <div class="ibox-content collapse" style=" border-left: solid #1ab394; border-bottom: 1px #e7eaec; border-top: 1px #e7eaec;">
                             <h3>  Campaign Description </h3>
-                            Description 
+                            Description  
                           </div>
                       </div>
 
