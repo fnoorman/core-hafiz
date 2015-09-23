@@ -46,7 +46,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             'model' => $model,
                             'attributes' => [
                             'id',
-                            'geoZoneId',
+                            [
+                              'attribute' => 'geoZoneId',
+                              'label'=> 'Geo Zone',
+                              'value'=>
+                                   $model->getGeozoneName()
+
+                            ],
                             'name',
                             'rate',
                             [
