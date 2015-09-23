@@ -74,8 +74,15 @@ class Taxrate extends \yii\db\ActiveRecord
 
     public function StatusTax()
     {
-        $statusLookup = Lookup::items('taxrate');
+        $statusLookup = Lookup::items('Tax-Rate');
         return $statusLookup[$this->type];
+    }
+
+    public function RateDropDownOptions()
+    {
+        $statusRate = Lookup::items('Tax-Rate');
+        return $statusRate;
+        //return ArrayHelper::map($statusLookup,'code','name');
     }
 
 

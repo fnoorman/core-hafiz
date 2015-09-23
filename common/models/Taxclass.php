@@ -3,7 +3,8 @@
 namespace common\models;
 
 use Yii;
-
+use yii\behaviors\TimestampBehavior;
+use common\models\Lookup;
 /**
  * This is the model class for table "tax_class".
  *
@@ -26,6 +27,14 @@ class Taxclass extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'tax_class';
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+
+        ];
     }
 
     /**
@@ -67,6 +76,14 @@ class Taxclass extends \yii\db\ActiveRecord
         return $this->hasMany(TaxRule::className(), ['tax_class_id' => 'id']);
     }
 
+    public function BasedDropDownOptions()
+    {
+        $statusLookup = Lookup::items('Tax-Rules');
+        return $statusLookup;
+        //return ArrayHelper::map($statusLookup,'code','name');
+    }
+
+    
     /**
      * @inheritdoc
      * @return TaxClassQuery the active query used by this AR class.

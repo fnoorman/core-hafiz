@@ -32,14 +32,16 @@ $custom = CustomInspiniaAsset::register($this);
         </div>
         <div class="col-lg-3">
 
-            <?php echo $form->field($model, 'type')->dropDownList(['7' => 'Percentage', '8' => 'Fixed Amount'],[
+            <?= $form->field($model, 'type')->dropDownList($model->RateDropDownOptions(),[
 
                 // 'data-placeholder'=>'Choose permission...',
                 'class'           =>'chosen-select',
                 'style'           =>'width:330px;',
                 'tabindex'        =>'3',
                 'prompt'          =>'Choose Type'
-            ]); ?>
+
+
+            ]) ?>
 
         </div>
 
@@ -53,7 +55,7 @@ $custom = CustomInspiniaAsset::register($this);
                  'class'           =>'chosen-select',
                  'style'           =>'width:330px;',
                  'tabindex'        =>'3',
-                 'prompt'          =>'Choose Country'
+                 'prompt'          =>'Choose Geo Zone'
              ])
         ?>
       </div>
