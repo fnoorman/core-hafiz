@@ -32,7 +32,7 @@ $custom = CustomInspiniaAsset::register($this);
         </div>
         <div class="col-lg-3">
 
-            <?php echo $form->field($model, 'type')->dropDownList(['P' => 'Percentage', 'F' => 'Fixed Amount'],[
+            <?php echo $form->field($model, 'type')->dropDownList(['7' => 'Percentage', '8' => 'Fixed Amount'],[
 
                 // 'data-placeholder'=>'Choose permission...',
                 'class'           =>'chosen-select',
