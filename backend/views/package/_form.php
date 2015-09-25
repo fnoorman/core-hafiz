@@ -9,10 +9,6 @@ use common\assets\inspinia\CustomInspiniaAsset;
 /* @var $form yii\widgets\ActiveForm */
 $custom = CustomInspiniaAsset::register($this);
 ?>
-
-
-
-
     <?php $form = ActiveForm::begin([
         'fieldConfig' => [
             'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
@@ -113,5 +109,3 @@ $custom = CustomInspiniaAsset::register($this);
 </script>
 
 <?php $this->endBlock(); ?>
-
-

@@ -54,6 +54,16 @@ SiteIndexAsset::register($this);
                                 ['label' => 'Top Up', 'url' => ['topup/index'],'icon'=>'fa fa-retweet'],
                                 // 'Products' menu item will be selected as long as the route is 'product/index'
                                 ['label' => 'Lookup', 'url' => ['lookup/index']],
+                                ['label' => 'Discount', 'url' => ['discount/index']],
+                                ['label' => 'Geo Zone', 'url' => ['geozone/index']],
+                                ['label' => 'Zone to Geozone', 'url' => ['zonetogeozone/index']],
+                                ['label' => 'Country List', 'url' => ['country/index']],
+                                ['label' => 'Zone List', 'url' => ['zone/index']],
+                                ['label' => 'Tax', 'url' => '','items' => [
+                                    ['label' => 'Tax Class', 'url' => ['taxclass/index'],'icon'=>'fa fa-sitemap'],
+                                    ['label' => 'Tax Rate', 'url' => ['taxrate/index'],'icon'=>'fa fa-pencil-square-o'],
+                                    // ['label' => 'Tax Rules', 'url' => ['taxrule/index'],'icon'=>'fa fa-pencil-square-o'],
+                                ]],
                                 ['label' => 'Campaign', 'url' => ['campaign/campaign']],
                                 ['label' => 'Assignment', 'url' => '','items' => [
                                     ['label' => 'Role', 'url' => ['role/index'],'icon'=>'fa fa-sitemap'],
