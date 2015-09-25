@@ -10,27 +10,16 @@ namespace common\modules\api\controllers;
 
 use yii\rest\Controller;
 use common\models\Package;
+use common\models\Topup;
 
 class CartController extends Controller
 {
-    public function actionAddPackage($id)
+    public function actionAddPackage($id,$modelClass)
     {
-        $package = Package::findOne($id);
-        $session = \Yii::$app->session;
-        $isLoggedIn = true;
-        if(\Yii::$app->user->isGuest)
-        {
-            $isLoggedIn = false;
-        }
+        if($modelClass === 'Package' )
+            $package = Package::findOne($id);
         else
-        {
-            if(!$session->isActive)
-            {
-                $session->open();
-            }
-
-        }
-        $result = ['session'=>$session,'data'=>$package,'isLoggedIn'=> $isLoggedIn];
-        return $result;
+            $package = Topup::findOne($id);
+        return $package;
     }
 }
