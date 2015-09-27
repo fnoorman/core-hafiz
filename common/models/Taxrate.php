@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use common\models\Geozone;
+use common\models\Lookup;
 
 /**
  * This is the model class for table "tax_rate".
@@ -71,10 +72,17 @@ class Taxrate extends \yii\db\ActiveRecord
         return $gz->name;
     }
 
-    public function StatusText()
+    public function StatusTax()
     {
-        $statusLookup = Lookup::items('taxrate');
+        $statusLookup = Lookup::items('Tax-Rate');
         return $statusLookup[$this->type];
+    }
+
+    public function RateDropDownOptions()
+    {
+        $statusRate = Lookup::items('Tax-Rate');
+        return $statusRate;
+        //return ArrayHelper::map($statusLookup,'code','name');
     }
 
 

@@ -74,4 +74,10 @@ class Country extends \yii\db\ActiveRecord
         return $statusLookup;
         //return ArrayHelper::map($statusLookup,'code','name');
     }
+
+    public function StatusText()
+    {
+        $statusLookup = Lookup::items('Status-Package');
+        return $statusLookup[$this->status];
+    }
 }

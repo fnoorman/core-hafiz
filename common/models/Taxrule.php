@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use common\models\Taxrate;
+use common\models\Lookup;
 
 /**
  * This is the model class for table "tax_rule".
@@ -65,6 +66,13 @@ class Taxrule extends \yii\db\ActiveRecord
         $tr = Taxrate::findOne($this->tax_rate_id);
         return $tr->name;
     }
+
+    public function StatusTaxText()
+    {
+        $statusTax = Lookup::items('Tax-Rules');
+        return $statusTax[$this->based];
+    }
+
 
 
     /**

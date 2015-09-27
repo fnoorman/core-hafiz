@@ -60,12 +60,13 @@ $this->params['breadcrumbs'][] = $this->title;
                           'headerOptions'=>['width'=>'100px']
                         ],
                         [
-                          'attribute' => 'type',
-                          'format'=>'raw',
-                          //'value'=> if($model->type == "P"): "Percentage"; else : "Fixed Amount"; endif;
-                          'headerOptions'=>['width'=>'150px']
+                            'attribute' => 'type',
+                            'format'=>'raw',
+                            'value'=> function($model){
+                                return $model->StatusTax();
+                            },
+                            'headerOptions'=>['width'=>'100px']
                         ],
-
                         // 'created_at',
                         // 'updated_at',
                         ['class' => 'yii\grid\ActionColumn'],

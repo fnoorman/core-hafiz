@@ -73,7 +73,7 @@ $custom = CustomInspiniaAsset::register($this);
                                       <tr>
                                           <td><?=$row->getTaxRateName(); ?></td>
                                           <td>
-                                            <?=$row->based; ?>
+                                            <?=$row->StatusTaxText(); ?>
                                           </td>
                                           <td align="right">
                                             <?=Html::a('<i class="fa fa-lg fa-trash" style="color:darkred"></i>',['taxclass/delete-rule','tax_class_id'=>$row['id'],'id'=>$model->id])?>
@@ -113,14 +113,18 @@ $custom = CustomInspiniaAsset::register($this);
                                                            'prompt'          =>'Choose Rate'
                                                        ])
                                                   ?>
-                                                  <?php echo $form->field($classtaxRule, 'based')->dropDownList(['shipping' => 'Shipping Address', 'payment' => 'Payment Address', 'store' => 'Store Address'],[
+
+                                                  <?= $form->field($classtaxRule, 'based')->dropDownList($model->BasedDropDownOptions(),[
 
                                                       // 'data-placeholder'=>'Choose permission...',
                                                       'class'           =>'chosen-select',
-                                                      'style'           =>'width:330px;',
+                                                      'style'           =>'width:150px;',
                                                       'tabindex'        =>'3',
-                                                      'prompt'          =>'Choose Type'
-                                                  ]); ?>
+                                                      'prompt'          =>'Choose Based'
+
+
+                                                  ]) ?>
+
                                                   <input type="hidden" name="tax[id]" value="<?=$model->id; ?>">
 
                                                   <?= $form->field($classtaxRule, 'priority')->textInput(['maxlength' => true,'style'=>'width:40px;']) ?>

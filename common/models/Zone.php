@@ -78,4 +78,11 @@ class Zone extends \yii\db\ActiveRecord
         $statusLookup = Lookup::items('Status-Package');
         return $statusLookup[$this->status];
     }
+
+    public function StatusDropDownOptions()
+    {
+        $statusLookup = Lookup::items('Status-Package');
+        return $statusLookup;
+        //return ArrayHelper::map($statusLookup,'code','name');
+    }
 }

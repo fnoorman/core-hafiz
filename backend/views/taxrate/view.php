@@ -40,19 +40,31 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
 
 
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <?= DetailView::widget([
+                            'model' => $model,
+                            'attributes' => [
+                            'id',
+                            [
+                              'attribute' => 'geoZoneId',
+                              'label'=> 'Geo Zone',
+                              'value'=>
+                                   $model->getGeozoneName()
 
-                    <?= DetailView::widget([
-                    'model' => $model,
-                    'attributes' => [
-                    'id',
-                    'geoZoneId',
-                    'name',
-                    'rate',
-                    'type',
-                    'created_at:datetime',
-                    'updated_at:datetime',
-                    ],
-                    ]) ?>
+                            ],
+                            'name',
+                            'rate',
+                            [
+                                'label'=> 'Type',
+                                'value'=> $model->StatusTax()
+                            ],
+                            'created_at:datetime',
+                            'updated_at:datetime',
+                            ],
+                            ]) ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
