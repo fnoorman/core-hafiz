@@ -296,6 +296,14 @@ $this->title = 'My Yii Application';
 
                               <table class="table">
                                 <tbody >
+                                  <tr>
+                                    <td>
+                                      Campaign Title :
+                                    </td>
+                                    <td align="right">
+                                      Video Contest
+                                    </td>
+                                  </tr>
                                  <tr>
                                    <td>
                                      Total Callouts :
@@ -328,14 +336,7 @@ $this->title = 'My Yii Application';
                                      <span class="label label-warning" style="float:right">03-09-2015</span>
                                    </td>
                                  </tr>
-                                 <tr>
-                                   <td>
-                                     Campaign Title :
-                                   </td>
-                                   <td align="right">
-                                     Video Contest
-                                   </td>
-                                 </tr>
+
                                  <tr>
                                    <td>
                                      Campaign Type :
@@ -374,6 +375,14 @@ $this->title = 'My Yii Application';
 
                               <table class="table">
                                 <tbody>
+                                  <tr>
+                                    <td>
+                                      Campaign Title :
+                                    </td>
+                                    <td align="right">
+                                      Customers Reviews
+                                    </td>
+                                  </tr>
                                  <tr>
                                    <td>
                                      Total Callouts :
@@ -406,14 +415,7 @@ $this->title = 'My Yii Application';
                                      <span class="label label-danger"  style="float:right">03-08-2015</span>
                                    </td>
                                  </tr>
-                                 <tr>
-                                   <td>
-                                     Campaign Title :
-                                   </td>
-                                   <td align="right">
-                                     Customers Reviews
-                                   </td>
-                                 </tr>
+
                                  <tr>
                                    <td>
                                      Campaign Type :
@@ -452,6 +454,14 @@ $this->title = 'My Yii Application';
 
                               <table class="table">
                                 <tbody>
+                                  <tr>
+                                    <td>
+                                      Campaign Title :
+                                    </td>
+                                    <td align="right">
+                                     Product Reviews
+                                    </td>
+                                  </tr>
                                  <tr>
                                    <td>
                                      Total Callouts :
@@ -484,14 +494,7 @@ $this->title = 'My Yii Application';
                                      <span class="label label-primary" style="float:right">03-12-2016</span>
                                    </td>
                                  </tr>
-                                 <tr>
-                                   <td>
-                                     Campaign Title :
-                                   </td>
-                                   <td align="right">
-                                    Product Reviews
-                                   </td>
-                                 </tr>
+
                                  <tr>
                                    <td>
                                      Campaign Type :
@@ -513,7 +516,7 @@ $this->title = 'My Yii Application';
                           </div>
                           <div class="ibox-content collapse" style=" border-left: solid #1ab394; border-bottom: 1px #e7eaec; border-top: 1px #e7eaec;">
                             <h3>  Campaign Description </h3>
-                            Description  
+                            Description
                           </div>
                       </div>
 

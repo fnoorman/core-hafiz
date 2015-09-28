@@ -27,7 +27,7 @@ InspiniaContestAsset::register($this);
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?=ucfirst(Yii::$app->user->identity->username)?></strong>
                              </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
-                             
+
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="profile.html">Profile</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
@@ -50,6 +50,7 @@ InspiniaContestAsset::register($this);
                         'items' => [
                             // Important: you need to specify url as 'controller/action',
                             // not just as 'controller' even if default action is used.
+                            ['label' => 'Home', 'url' => ['site/index'],'icon'=>'fa fa-home'],
                             ['label' => 'Order', 'url' => ['site/orderform'],'icon'=>'fa fa-gift'],
                             ['label' => 'Campaign', 'url' => '#', 'icon'=>'fa fa-cubes',
                                 'items'=> [
