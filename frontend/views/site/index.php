@@ -536,14 +536,8 @@ $this->title = 'My Yii Application';
 
 
 <?php $this->beginBlock('JavascriptInit'); ?>
-<!-- graph scripts -->
 
-<script src="<?=Url::base(true)?>/js/raphael-2.1.0.min.js"></script>
-<script src="<?=Url::base(true)?>/js/morris.js"></script>
 <script src="<?=Url::base(true)?>/js/data.js"></script>
-
-<!-- Data picker -->
-<script src="<?=Url::base(true)?>/js/bootstrap-datepicker.js"></script>
 
 <script>
 $(document).ready(function(){

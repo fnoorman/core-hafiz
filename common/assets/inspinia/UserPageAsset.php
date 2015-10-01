@@ -23,9 +23,11 @@ class UserPageAsset extends AssetBundle
         'css/datepicker3.css',
     ];
     public $js = [
-
+      "js/plugins/morris/raphael-2.1.0.min.js",
+      "js/plugins/morris/morris.js",
+      "js/plugins/datapicker/bootstrap-datepicker.js",
     ];
     public $depends = [
-        'yii\web\YiiAsset',
+          'common\assets\inspinia\InspiniaAsset',
     ];
 }
