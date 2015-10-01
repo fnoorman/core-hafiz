@@ -9,10 +9,11 @@ use yii\helpers\Url;
 use common\components\Menu;
 use common\assets\inspinia\SiteIndexAsset;
 use common\assets\inspinia\InspiniaContestAsset;
+use common\assets\inspinia\UserPageAsset;
 
 SiteIndexAsset::register($this);
-
 InspiniaContestAsset::register($this);
+UserPageAsset::register($this);
 ?>
 
 <?php $this->beginContent('@frontend/views/layouts/inspinia/base.php');?>

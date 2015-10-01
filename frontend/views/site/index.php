@@ -6,11 +6,6 @@ use yii\helpers\Url;
 $this->title = 'My Yii Application';
 ?>
 
-<link href="<?=Url::base(true)?>/css/custom.css" rel="stylesheet">
-<link href="<?=Url::base(true)?>/css/morris-0.4.3.min.css" rel="stylesheet">
-<link href="<?=Url::base(true)?>/css/datepicker3.css" rel="stylesheet">
-
-
 <div class="site-index">
 
     <!-- start graph -->
