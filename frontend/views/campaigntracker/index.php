@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\ReviewSearch */
+/* @var $searchModel common\models\CampaignTrackerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Reviews');
+$this->title = Yii::t('app', 'Campaign Trackers');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wrapper wrapper-content animated fadeIn">
@@ -26,24 +26,24 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-lg-12">
                             <p>
-                                <?= Html::a(Yii::t('app', 'Create Review'), ['create'], ['class' => 'btn btn-success']) ?>
+                                <?= Html::a(Yii::t('app', 'Create Campaign Tracker'), ['create'], ['class' => 'btn btn-success']) ?>
                             </p>
                         </div>
                     </div>
                                             <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
-                        'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-                            'id',
-                            [
-                                'attribute'=>'contents',
-                                'format'=>'raw'
-                            ],
-//                            'contents:ntext',
+        'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
-                            ['class' => 'yii\grid\ActionColumn'],
-                            ],
+                                    'id',
+            'user_id',
+            'uuid',
+            'code',
+            'total_view',
+
+                        ['class' => 'yii\grid\ActionColumn'],
+                        ],
                         ]); ?>
                     
                 </div>

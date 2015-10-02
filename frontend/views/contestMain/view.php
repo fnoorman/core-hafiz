@@ -79,7 +79,9 @@ $this->params['breadcrumbs'][] = $model->contest_name;
 
     <p id="allHiddenInput" style="display:none">
         <input type="text" id="currentContestID" value="<?=$model->id?>">
-        <input type="text" id="currentFullViewLink" value="<?= Url::to(['contestmain/getjsoncontest_specific'])?>">
+        <input type="text" id="webrootLink" value="<?=Url::base(true)?>">
+        <input type="text" id="currentFullViewLink" value="<?= Url::base(true).'/contestmain/getjsoncontest_specific'?>">
+        <input type="text" id="currentFullViewLink1" value="<?= Url::to(['contestmain/getjsoncontest_specific'])?>">
         <input type="text" id="linkTOdeleteContest" value="<?=Yii::$app->urlManager->createUrl('contest/delete_remote')?>">
         <a href="<?= Url::to(['contestmain/getjsoncontest_specific'])?>" data-method="post">..zfdsfd.</a>
     </p>
@@ -179,7 +181,7 @@ $this->params['breadcrumbs'][] = $model->contest_name;
              <div class="col-lg-7">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                         <h5>  <b class=""><?=$model->contest_name?></b> </h5>
+                         <h5>  <b style="text-align:center"><?=$model->contest_name?></b> </h5>
                         <div class="ibox-tools">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="fa fa-wrench"></i>
@@ -192,6 +194,7 @@ $this->params['breadcrumbs'][] = $model->contest_name;
                             </ul>
                         </div>
                     </div>
+                     <center><p id="bannerz"></p></center>
                     <div class="ibox-content" id="fullView_question">
                         <!-- js rendered content -->
                          

@@ -20,7 +20,7 @@ $this->params['bodyClass'] = 'hybrizy-purple-bg';
         <h3>Welcome to Hybrizy</h3>
         <?php
         $resetLink = Yii::$app->urlManager->createAbsoluteUrl(['site/reset-password', 'token' => 'adf gyr3fer435rgeg']);
-        echo "===> ".$resetLink;
+        //echo "===> ".$resetLink;
         ?>
         <p>A tiny code that promises awesome feedback from your customers and audiences.
             An innovating approach for creating attention-grabbing contents.

@@ -30,6 +30,8 @@ $custom = InspiniaAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <link href="<?=$custom->baseUrl?>/css/animate.css" rel="stylesheet">
+    <link href="<?=$custom->baseUrl?>/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="<?=$custom->baseUrl?>/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
     <link href="<?=$custom->baseUrl?>/css/style.css" rel="stylesheet">
 </head>
 <?php

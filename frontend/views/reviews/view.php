@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Review */
+/* @var $model common\models\Reviews */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Reviews'), 'url' => ['index']];
@@ -45,8 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'model' => $model,
                     'attributes' => [
                                 'id',
-                                'contents:raw',
-                                ],
+            'contents:ntext',
+                    ],
                     ]) ?>
                 </div>
             </div>

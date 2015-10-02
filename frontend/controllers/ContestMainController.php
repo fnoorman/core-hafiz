@@ -70,6 +70,7 @@ class ContestmainController extends Controller
      */
     public function actionView($id)
     {
+        //echo $id; exit;
     	//$event = ""; 
     	//$model_main = new ContestMain();
 
@@ -144,7 +145,7 @@ class ContestmainController extends Controller
 
             $query = ContestMain::find()->where(['user_id' => Yii::$app->user->id])->one();
 
-            $model_contest = $this->connection->createCommand("SELECT * FROM contest where contest_id = $contest_id");
+            $model_contest = $this->connection->createCommand("SELECT contest.*, contest_main.contest_name, contest_main.contest_image FROM contest LEFT JOIN contest_main ON contest.contest_id = contest_main.id where contest.contest_id = $contest_id");
 
 			$get_model_contest = $model_contest->queryAll();
 
@@ -203,7 +204,8 @@ class ContestmainController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        //$model = $this->findModel($id);
+         $model = new ContestForm();
 
 
         if ($model->load(Yii::$app->request->post())) {
@@ -214,6 +216,12 @@ class ContestmainController extends Controller
           
                // return $this->redirect(['view', 'id' => $model->id]);
         } else {
+            $model1 = $this->findModel($id);
+            $model->id = $model1->id;
+            $model->user_id = $model1->user_id;
+            $model->contest_name = $model1->contest_name;
+            $model->contest_image = $model1->contest_image;
+
             return $this->render('update', [
                 'model' => $model,
             ]);

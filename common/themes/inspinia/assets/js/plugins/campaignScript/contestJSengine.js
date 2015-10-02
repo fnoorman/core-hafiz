@@ -148,15 +148,17 @@ $('body').on('beforeSubmit', 'form#contestDetailForm', function ()
  
 
 // contest patcher script
-function getContest() { 
+function getContest() {  
 
 	$('#fullView_question').html('');
 	var currentFullViewLink = $('#currentFullViewLink').val();
 	var currentContestID = $('#currentContestID').val();
 	var linkTOdeleteContest = $('#linkTOdeleteContest').val();
+	var webRootLink = $('#webrootLink').val();
+
 
            $.ajax({
-                url: currentFullViewLink +'&contest_id='+currentContestID,
+                url: currentFullViewLink +'?contest_id='+currentContestID,
                 dataType: 'json',
                 crossDomain: true,
                 json: true,
@@ -165,7 +167,7 @@ function getContest() {
  
                     var i, k, l = d.items.length, newLi, newItem, contestAnswer,finalData, A, B, C, D;
 
-                    
+                    $('#bannerz').html('<img src="'+webRootLink+d.items[0].contest_image+'">');
 
                     $('<p id="well-place"></p>').appendTo('#fullView_question');
 
@@ -190,7 +192,7 @@ function getContest() {
 
 		           					//alert(contestAnswer1.toSource());
 		           					$('<h3><b>'+k+'. '+newItem.question + '?</h3>'+ 
-		           						'<a class="btn btn-danger pull-right" type="button" href="'+linkTOdeleteContest+'&id='+newItem.id+'&contest_id='+newItem.contest_id+'"> Delete</a>'+
+		           						'<a class="btn btn-danger pull-right" type="button" href="'+linkTOdeleteContest+'?id='+newItem.id+'&contest_id='+newItem.contest_id+'"> Delete</a>'+
 									    '<p style="margin-left:21px">'+
 										'<input id="qr" name="objAns" type="radio" value="A"> ' +A+
 										'<br><input id="qr" name="objAns" type="radio" value="B"> ' +B+
@@ -207,7 +209,7 @@ function getContest() {
 		                        	//finalData = contestAnswer.contestAnswer(/\\/g,"");
 
 		                        	$('<h3><b>'+k+'. '+newItem.question + '?</h3>'+
-		                        		'<a class="btn btn-danger pull-right" type="button" href="'+linkTOdeleteContest+'&id='+newItem.id+'&contest_id='+newItem.contest_id+'"> Delete</a>'+
+		                        		'<a class="btn btn-danger pull-right" type="button" href="'+linkTOdeleteContest+'?id='+newItem.id+'&contest_id='+newItem.contest_id+'"> Delete</a>'+
 		                        	 	'<p style="margin-left:21px"><textarea id="sd" name="df"></textarea> '+
 									 	'</p>').appendTo(newDiv);
 		                        }

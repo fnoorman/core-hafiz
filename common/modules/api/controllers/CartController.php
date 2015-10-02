@@ -33,4 +33,31 @@ class CartController extends Controller
         $result = ['session'=>$session,'data'=>$package,'isLoggedIn'=> $isLoggedIn];
         return $result;
     }
+
+     /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignup()
+    {
+
+        return "ok";
+        /*$model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) 
+            {
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                return "OK";
+            }else 
+            {
+                  return false;
+            }
+        }
+         return $model->errors;*/
+
+    }
+
+
+    
 }

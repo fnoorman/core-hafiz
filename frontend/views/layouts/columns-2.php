@@ -55,6 +55,7 @@ InspiniaContestAsset::register($this);
                                 'items'=> [
                                     ['label' => 'Contest', 'url' => ['contestmain/index'],'icon'=>'fa fa-yelp'],
                                     ['label' => 'Review', 'url' => ['review/index'],'icon'=>'fa fa-book'],
+                                     ['label' => 'Reviews', 'url' => ['reviews/index'],'icon'=>'fa fa-book'],
                                 ]
                             ],
                             ['label' => 'Rights', 'url' => '#','items' => [

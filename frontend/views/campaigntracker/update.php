@@ -1,15 +1,14 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\ContestMain */
+/* @var $model common\models\CampaignTracker */
 
-$this->title = Yii::t('app', 'Update ', [
-    //'modelClass' => 'Contest Main',
-]) . ' ' . $model->contest_name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Contest Mains'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Update {modelClass}: ', [
+    'modelClass' => 'Campaign Tracker',
+]) . ' ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Campaign Trackers'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
@@ -26,11 +25,10 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content animated fadeInLeft">
-                 <?= $this->render('_form', [
+                <div class="ibox-content">
+                    <?= $this->render('_form', [
                     'model' => $model,
                     ]) ?>
-
                 </div>
             </div>
         </div>

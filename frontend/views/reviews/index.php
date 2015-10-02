@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\ReviewSearch */
+/* @var $searchModel common\models\ReviewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Reviews');
@@ -26,24 +26,24 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="row">
                         <div class="col-lg-12">
                             <p>
-                                <?= Html::a(Yii::t('app', 'Create Review'), ['create'], ['class' => 'btn btn-success']) ?>
+                                <?= Html::a(Yii::t('app', 'Create Reviews'), ['create'], ['class' => 'btn btn-success']) ?>
                             </p>
                         </div>
                     </div>
                                             <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
-                        'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-                            'id',
-                            [
-                                'attribute'=>'contents',
-                                'format'=>'raw'
-                            ],
-//                            'contents:ntext',
+        'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
-                            ['class' => 'yii\grid\ActionColumn'],
+                                    'id',
+                                    [
+                                'attribute'=>'contents',
+                                'format'=>'html'
                             ],
+
+                        ['class' => 'yii\grid\ActionColumn'],
+                        ],
                         ]); ?>
                     
                 </div>

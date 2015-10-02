@@ -16,7 +16,18 @@ use yii\widgets\ActiveForm;
 
 	    <?= $form->field($model, 'contest_name')->textInput(['maxlength' => true]) ?>
 
-	    <?= $form->field($model, 'file_image')->fileInput() ?>
+	    <?php if(!isset($model->id)) :?>
+	   	 	<?= $form->field($model, 'file_image')->fileInput() ?>
+		<?php else :?>
+			<?php if(isset($model->contest_image)) :?>
+					<!-- //Display Image -->
+					<?= $form->field($model, 'file_image')->fileInput()->label('New Image') ?>
+					
+			<?php else :?>
+				<?= $form->field($model, 'file_image')->fileInput() ?>
+			<?php endif;?>
+
+		<?php endif;?>
 
 	    <?= $form->field($model, 'status')->textInput(['value'=> '1']) ?>
 

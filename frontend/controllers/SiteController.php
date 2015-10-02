@@ -263,6 +263,30 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignupmobile()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+ 
+            }else 
+            {
+                  return false;
+            }
+        }
+         return $model->errors;
+
+        /*return $this->render('signup', [
+            'model' => $model,
+        ]);*/
+        
+    }
+
          /**
      * Logs in a user.
      *
@@ -367,7 +391,7 @@ class SiteController extends Controller
     }
     public function beforeAction($action)
     {
-        if ($action->id === 'paymentsuccess') {
+        if ($action->id === 'paymentsuccess' ||  $action->id === 'signupmobile') {
             $this->enableCsrfValidation = false;
         }else {
              $this->enableCsrfValidation = true;
