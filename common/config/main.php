@@ -35,6 +35,7 @@ return [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'api/package'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'api/contest'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'api/cart'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'api/mobile'],
             ],
         ],
 
